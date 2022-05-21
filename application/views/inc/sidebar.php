@@ -107,7 +107,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Member/MemberRegister/addMember'); ?>" key="t-products">Register</a></li>
-                                    <li><a href="javascript::void();" key="t-products">Activation Request</a></li>
+                                    <li><a href="<?php echo base_url('Member/ActivatioRequest'); ?>" key="t-products">Activation Request</a></li>
                                     <li><a href="javascript::void();" key="t-products">Genology</a></li>
                                     <li><a href="javascript::void();" key="t-products">Team Bussiness </a></li>
                                 </ul>
