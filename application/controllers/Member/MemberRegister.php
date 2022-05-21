@@ -103,5 +103,51 @@
 			$d['v'] = "Member/member_lists";
 			$this->load->view('templates',$d);
 		}
+
+		public function editMember()
+		{
+			$api = 'Member/getRegisterData';
+			$data = 'member_id='.$_POST['member_id'];
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			$d['member_details'] = $result['data']['data'];
+			$this->load->view('ajax/ajax_editMember_details',$d);
+		}
+
+		public function UpdateMember()
+		{
+			$api = 'Member/updateMember';
+			$data = 'member_id='.$_POST['member_id'].'&name='.$_POST['name'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&address='.$_POST['address'].'&d_by='.$this->session->userdata('user_id');
+			$method = 'POST';
+			// echo "<pre>";
+			// print_r($data); die;
+			$result = $this->CallAPI($api, $data, $method);
+			if ($result['response_code']== 200) 
+			{
+				$this->session->set_flashdata('success', $result['msg']);
+                redirect('Member/MemberRegister/MemberList');
+			}else{
+				$this->session->set_flashdata('error', $result['msg']);
+                redirect('Member/MemberRegister/MemberList');
+			}
+		}
+
+		public function deleteMember()
+		{
+			$api = 'Member/deleteRegister';
+			$data = 'member_id='.$_POST['member_id'].'&d_by='.$this->session->userdata('user_id');
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			print_r($result['response_code']);	
+		}
+
+		public function blockmember()
+		{
+			$api = 'Member/blockUnblockedRegister';
+			$data = 'member_id='.$_POST['member_id'].'&d_by='.$this->session->userdata('user_id');
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			print_r($result['response_code']);	
+		}
 	}
 ?>
