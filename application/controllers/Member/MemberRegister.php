@@ -141,10 +141,19 @@
 			print_r($result['response_code']);	
 		}
 
-		public function blockmember()
+		public function unblock_member()
 		{
 			$api = 'Member/blockUnblockedRegister';
-			$data = 'member_id='.$_POST['member_id'].'&d_by='.$this->session->userdata('user_id');
+			$data = 'member_id='.$_POST['member_id'].'&status='.'1'.'&d_by='.$this->session->userdata('user_id');
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			print_r($result['response_code']);	
+		}
+
+		public function block_member()
+		{
+			$api = 'Member/blockUnblockedRegister';
+			$data = 'member_id='.$_POST['member_id'].'&status='.'0'.'&d_by='.$this->session->userdata('user_id');
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			print_r($result['response_code']);	

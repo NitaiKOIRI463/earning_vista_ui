@@ -81,9 +81,21 @@
                                                                 <a id="<?php echo $list['member_id']; ?>" onclick="deleteMember(this.id);" class="btn btn-danger waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-trash"></i>
                                                                 </a>
 
-                                                                <a id="<?php echo $list['member_id']; ?>" onclick="block_unblockMember(this.id);" class="btn btn-warning waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-ban"></i>
-                                                                </a>
-
+                                                                <?php 
+                                                                    if($list['block_status'] == 0)
+                                                                    {
+                                                                        ?>
+                                                                        <a id="<?php echo $list['member_id']; ?>" onclick="unblockMember(this.id);" class="btn btn-warning waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-ban"></i>
+                                                                        </a>
+                                                                        <?php
+                                                                    }else if($list['block_status'] == 1)
+                                                                    {
+                                                                        ?>
+                                                                        <a id="<?php echo $list['member_id']; ?>" onclick="blockMember(this.id);" class="btn btn-success waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-ban"></i>
+                                                                        </a>
+                                                                        <?php
+                                                                    }
+                                                                 ?>
                                                             </td>
                                                         </tr>
                                                     <?php
@@ -196,7 +208,43 @@
 </script>
 
 <script type="text/javascript">
-    function block_unblockMember(id)
+    function unblockMember(id)
+   {  
+      swal({
+        title: "Are you sure?",
+        text: "You want to unblock this member !",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) =>{
+        if (willDelete) {
+          $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url();?>Member/MemberRegister/unblock_member',
+            data:{member_id:id,},
+            success:function(data)
+            {
+                // console.log(data);
+              if(data=='200'){
+                  swal("Successfully Unblocked!!", {
+                  icon: "success",
+                });
+                location.reload();
+              }else{
+                swal("Something Went Wrong !!", {
+                icon: "error",
+                });
+                location.reload();
+              }
+            }
+    
+          });
+        } 
+    });
+   }
+
+   function blockMember(id)
    {  
       swal({
         title: "Are you sure?",
@@ -209,22 +257,22 @@
         if (willDelete) {
           $.ajax({
             type: 'POST',
-            url: '<?php echo base_url();?>Member/MemberRegister/blockmember',
+            url: '<?php echo base_url();?>Member/MemberRegister/block_member',
             data:{member_id:id,},
             success:function(data)
             {
-                console.log(data);
-              // if(data=='200'){
-              //     swal("Successfully Blocked!!", {
-              //     icon: "success",
-              //   });
-              //   location.reload();
-              // }else{
-              //   swal("Something Went Wrong !!", {
-              //   icon: "error",
-              //   });
-              //   location.reload();
-              // }
+                // console.log(data);
+              if(data=='200'){
+                  swal("Successfully Unblocked!!", {
+                  icon: "success",
+                });
+                location.reload();
+              }else{
+                swal("Something Went Wrong !!", {
+                icon: "error",
+                });
+                location.reload();
+              }
             }
     
           });
