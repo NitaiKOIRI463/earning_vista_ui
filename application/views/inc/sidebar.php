@@ -41,6 +41,7 @@
                                     <li><a href="<?php echo base_url('Member/MemberRegister/addMember'); ?>" key="t-user-grid">Registration</a></li>
                                     <li><a href="<?php echo base_url('Member/MemberRegister/MemberList'); ?>" key="t-user-grid">Member List</a></li>
                                     <li><a href="<?php echo base_url('Admin/ActivationRequest'); ?>" key="t-user-list">Activation</a></li>
+                                    <li><a href="<?php echo base_url('Admin/ActivationRequest/ActivatioTreeDetails'); ?>" key="t-user-list">Activation Tree Details</a></li>
                                     <li><a href="javascript: void(0);" key="t-profile">Geonology</a></li>
                                     <li><a href="javascript: void(0);" key="t-profile">Team Bussiness</a></li>
                                 </ul>
@@ -126,13 +127,13 @@
                                 </ul>
                             </li>
 
-                            <li class="">
-                                <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
-                                    <i class="bx bx-store"></i>
-                                    <span key="t-ecommerce">Pakages</span>
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-bitcoin"></i>
+                                    <span key="t-crypto">Pakage</span>
                                 </a>
-                                <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
-                                    <li><a href="<?php echo base_url('Member/Pakages') ?>" key="t-products">My Pakage</a></li>
+                                <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                    <li><a href="<?php echo base_url('Member/Pakages') ?>" key="t-wallet">My Pakage</a></li>
                                 </ul>
                             </li>
 
@@ -143,7 +144,7 @@
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
                                     <li><a href="javascript: void(0);" key="t-login">Profile</a></li>
-                                    <li><a href="javascript: void(0);" key="t-login-2">Change Password</a></li>
+                                    <li><a href="<?php echo base_url('Member/TransectionPin'); ?>" key="t-login-2">Change Password</a></li>
                                     <li><a href="<?php echo base_url('Member/MemberLogin/logout'); ?>" key="t-register">Logout</a></li>
                                 </ul>
                             </li>
