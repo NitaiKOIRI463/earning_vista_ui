@@ -126,13 +126,13 @@
                                 </ul>
                             </li>
 
-                            <li class="">
-                                <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
-                                    <i class="bx bx-store"></i>
-                                    <span key="t-ecommerce">Pakages</span>
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-bitcoin"></i>
+                                    <span key="t-crypto">Pakage</span>
                                 </a>
-                                <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
-                                    <li><a href="<?php echo base_url('Member/Pakages') ?>" key="t-products">My Pakage</a></li>
+                                <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                    <li><a href="<?php echo base_url('Member/Pakages') ?>" key="t-wallet">My Pakage</a></li>
                                 </ul>
                             </li>
 
