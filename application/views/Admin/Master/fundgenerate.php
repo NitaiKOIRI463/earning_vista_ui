@@ -1,6 +1,4 @@
-
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
 
@@ -13,7 +11,7 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Fund > </a></li>
-                                <li class="breadcrumb-item active">Fund Generate List</li>
+                                <li class="breadcrumb-item active">Generate Fund</li>
                             </ol>
                         </div>
 
@@ -26,50 +24,50 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row" style="padding-bottom: 10px;">
+                                <div class="col-md-6">
+                                    <h4 class="card-title">Fund History</h4>
+                                </div>
+                                <div class="addbtn col-md-6">
 
-                            <h4 class="card-title">Fund List</h4>
+                                    <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm" style="float: right;margin-left: 5px;"> <i class="fas fa-plus-square"></i> Add</button>
 
-                            <div class="addbtn" style="float: right;margin-bottom: 10px;">
-                                <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm"> <i class="fas fa-plus-square"></i> Add</button>
-                                <a href="<?php echo base_url('Admin/Master/FundGenerate/fund_historyList'); ?>" class="btn btn-warning waves-effect waves-light"> Fund History</a>
+                                    <a href="<?php echo base_url('Admin/Master/FundGenerate/fund_historyList'); ?>" class="btn btn-primary waves-effect waves-light" style="float: right;"> Available Balance <span class="badge badge-pill badge-soft font-size-11" id="total_fund"></span><span>$</span></a>
+                                </div>
                             </div>
 
-                            <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-                                <thead style="text-align: center;background-color: burlywood;">
-                                <tr>
-                                    <th>Sl. No.</th>
-                                    <th>Pakage Name</th>
-                                    <th>Total Fund</th>
-                                    <th>Last Updated</th>
-                                </tr>
-                                </thead>
-
-                                <tbody style="text-align: center;">
-                                <?php 
-                                if(!empty($available_fund))
-                                {
-                                    foreach ($available_fund as $key => $fund) 
-                                    {
+                            <div class="table-responsive">
+                                <table  id="fundTable" class="table table-bordered" style="text-align: center;">
+                                    <thead style="background-color: burlywood;">
+                                        <tr>
+                                            <th>Sl. No.</th>
+                                            <th>Fund</th>
+                                            <th>Transection Type</th>
+                                            <th>Refrence No.</th>
+                                            <th>Genration Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php  
+                                        if(!empty($history))
+                                        {
+                                            foreach ($history as $key => $h_list) 
+                                            {
+                                             ?>
+                                                <tr>
+                                                    <td><?php echo ($key+1); ?></td>
+                                                    <td><?php echo $h_list['fund']; ?></td>
+                                                    <td><?php echo $h_list['transaction_type']; ?></td>
+                                                    <td><?php echo $h_list['ref_no']; ?></td>
+                                                    <td><?php echo $h_list['gen_date']; ?></td>
+                                                </tr>
+                                             <?php   
+                                            }
+                                        }
                                         ?>
-                                            <tr>
-                                                <td><?php echo ($key+1); ?></td>
-                                                <td><?php echo $fund['package_name']; ?> </td>
-                                                <td><?php echo $fund['total_fund']; ?></td>
-                                                <td><?php echo $fund['last_update_date']; ?></td>
-                                            </tr>
-                                        <?php
-                                    }
-                                }
-                                else
-                                {
-                                    ?>
-                                        <tr><td colspan="4" style="text-align: center;"> No Record Found </td></tr>
-                                    <?php
-                                }
-                                ?>
-                                </tbody>
-                            </table>
-
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- end col -->
@@ -78,6 +76,7 @@
     </div>
     <!-- End Page-content -->
 </div>
+
 
 <?php 
     if($this->session->flashdata('success')!=null)
@@ -104,7 +103,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mySmallModalLabel"> Generate Fund</h5>
+                <h5 class="modal-title" id="mySmallModalLabel"> Add Fund</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -114,30 +113,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label> Pakage Name</label>
-                                        <select class="form-control" name="pakage_name" id="pakage_name" required>
-                                            <option value="">---select---</option>
-                                            <?php 
-                                             foreach ($pakage as $key => $list) 
-                                             {
-                                                 ?>
-                                                    <option value="<?php echo $list['package_id'] ?>"><?php echo $list['package_name']; ?> (<?php echo $list['package_amount']; ?>)</option>
-                                                 <?php
-                                             }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label> Quatity</label>
-                                        <input type="number" name="qty" id="qty" class="form-control" required placeholder="Enter qty">
+                                        <label> Fund </label>
+                                        <input type="number" name="fund" id="fund" class="form-control" required placeholder="Enter fund">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="btn-area pt-3" style="float: right;">
-                            <button type="submit" class="btn btn-success waves-effect waves-light">Submit</button>
+                            <button type="submit" class="btn btn-success waves-effect waves-light">Add</button>
                         </div>
                     </div>        
                 </form>
@@ -145,3 +128,26 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
+
+<script type="text/javascript">
+    getTotalFund();
+    function getTotalFund()
+    {
+        $.ajax({
+            url: '<?php echo base_url() ?>Admin/Master/FundGenerate/get_total_fund',
+            type: 'POST',
+            data: {},
+            success:function(res)
+            {
+                console.log(res);
+                $("#total_fund").html(res,);
+            }
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#fundTable').DataTable();
+    });
+</script>

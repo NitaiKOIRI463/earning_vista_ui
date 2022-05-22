@@ -43,6 +43,8 @@
                                             <th>Member Id</th>
                                             <th>Parent Id</th>
                                             <th>Sponsor Id</th>
+                                            <th>Transection Pin</th>
+                                            <th>Password</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Side</th>
@@ -50,10 +52,11 @@
                                             <th>Country</th>
                                             <th>State</th>
                                             <th>City</th>
+                                            <th>Block Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="font-size: 11px;">
                                         <?php 
                                             if(!empty($memberList))
                                             {
@@ -67,6 +70,8 @@
                                                             <td><?php echo $list['member_id']; ?></td>
                                                             <td><?php echo $list['parent_id']; ?></td>
                                                             <td><?php echo $list['sponsor_id']; ?></td>
+                                                            <td><?php echo $list['transaction_pin']; ?></td>
+                                                            <td><?php echo $list['password']; ?></td>
                                                             <td><?php echo $list['mobile_no']; ?></td>
                                                             <td><?php echo $list['email_id']; ?></td>
                                                             <td><?php echo $list['side']; ?></td>
@@ -74,8 +79,26 @@
                                                             <td><?php echo $list['country']; ?></td>
                                                             <td><?php echo $list['state']; ?></td>
                                                             <td><?php echo $list['city']; ?></td>
+                                                            <?php 
+                                                            if($list['block_status'] == 1)
+                                                            {
+                                                                ?>
+                                                                <td>
+                                                                    <span class="badge badge-pill badge-soft-success font-size-11">Active</span>
+                                                                </td>
+                                                                <?php
+                                                            }else if($list['block_status'] == 0)
+                                                            {
+                                                                ?>
+                                                                <td>
+                                                                    <span class="badge badge-pill badge-soft-danger font-size-11">Blocked</span>
+                                                                </td>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                            
                                                             <td>
-                                                                <a id="<?php echo $list['member_id']; ?>" onclick="editMember(this.id);" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm" style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-pen-square"></i>
+                                                                <a id="<?php echo $list['member_id']; ?>" onclick="editMember(this.id);" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm" style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-pen-square"></i>
                                                                 </a>
 
                                                                 <a id="<?php echo $list['member_id']; ?>" onclick="deleteMember(this.id);" class="btn btn-danger waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-trash"></i>

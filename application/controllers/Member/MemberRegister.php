@@ -21,19 +21,18 @@
 
 		public function registerMember()
 		{
-			echo "<pre>";
-			print_r($_POST); die;
-			if($_FILES['photo']['size'] != '')
-			{
-				$profileImage = base64_encode(file_get_contents($_FILES['photo']['tmp_name']));	
-			}else{
-				$profileImage = null;
-			}
+			// if($_FILES['photo']['size'] != '')
+			// {
+			// 	$profileImage = base64_encode(file_get_contents($_FILES['photo']['tmp_name']));	
+			// }else{
+			// 	$profileImage = null;
+			// }
 
 			$api = 'Member/addMember';
 			$data = 'name='.$_POST['name'].'&email_id='.$_POST['email'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&sponsor_id='.$_POST['sponsor_id'].'&side='.$_POST['side'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&country_code='.$_POST['country_code'].'&address='.$_POST['address'].'&c_by='.$this->session->userdata('user_id');
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
+			// print_r($result); die;
 			if ($result['response_code']== 200) 
 			{
 				$this->session->set_flashdata('success', $result['msg']);
@@ -46,15 +45,17 @@
 
 		public function adminMember_register()
 		{
-			if($_FILES['photo']['size'] != '')
-			{
-				$profileImage = base64_encode(file_get_contents($_FILES['photo']['tmp_name']));	
-			}else{
-				$profileImage = null;
-			}
+			// echo "<pre>";
+			// print_r($_POST); die;
+			// if($_FILES['photo']['size'] != '')
+			// {
+			// 	$profileImage = base64_encode(file_get_contents($_FILES['photo']['tmp_name']));	
+			// }else{
+			// 	$profileImage = null;
+			// }
 
 			$api = 'Member/addMember';
-			$data = 'name='.$_POST['name'].'&email_id='.$_POST['email'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&sponsor_id='.$_POST['sponsor_id'].'&side='.$_POST['side'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&country_code='.$_POST['country_code'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&photo='.$profileImage.'&address='.$_POST['address'].'&c_by='.$this->session->userdata('user_id');
+			$data = 'name='.$_POST['name'].'&email_id='.$_POST['email'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&sponsor_id='.$_POST['sponsor_id'].'&side='.$_POST['side'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&country_code='.$_POST['country_code'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&address='.$_POST['address'].'&c_by='.$this->session->userdata('user_id');
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			if ($result['response_code']== 200) 
@@ -113,13 +114,25 @@
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			$d['member_details'] = $result['data']['data'];
+			// echo "<pre>";
+			// print_r($d['member_details']); die;
 			$this->load->view('ajax/ajax_editMember_details',$d);
 		}
 
 		public function UpdateMember()
 		{
+			// echo "<pre>";
+			// print_r($_POST); die;
+
+			if($_FILES['photo']['size'] != '')
+			{
+				$profileImage = base64_encode(file_get_contents($_FILES['photo']['tmp_name']));	
+			}else{
+				$profileImage = null;
+			}
+
 			$api = 'Member/updateMember';
-			$data = 'member_id='.$_POST['member_id'].'&name='.$_POST['name'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&address='.$_POST['address'].'&d_by='.$this->session->userdata('user_id');
+			$data = 'member_id='.$_POST['member_id'].'&name='.$_POST['name'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&address='.$_POST['address'].'&country_code='.$_POST['country_code'].'&photo='.$profileImage.'&transaction_pin='.$_POST['transection_pin'].'&password='.$_POST['password'].'&d_by='.$this->session->userdata('user_id');
 			$method = 'POST';
 			// echo "<pre>";
 			// print_r($data); die;

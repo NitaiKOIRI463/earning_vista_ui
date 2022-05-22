@@ -49,7 +49,7 @@
                                 <div class="row" style="max-height: 100px;">
                                     <div class="col-12">
                                         <div class="text-primary p-4" style="text-align: center;">
-                                            <h5 class="text-primary"> Earning Vista Register </h5>
+                                            <h5 class="text-primary"> Earn Vista Register </h5>
                                         </div>
                                     </div>
                                 </div>
