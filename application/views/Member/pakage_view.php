@@ -48,7 +48,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php  
+                                        <!-- <?php  
                                         if(!empty($history))
                                         {
                                             foreach ($history as $key => $h_list) 
@@ -64,7 +64,7 @@
                                              <?php   
                                             }
                                         }
-                                        ?>
+                                        ?> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -76,78 +76,3 @@
     </div>
     <!-- End Page-content -->
 </div>
-
-
-<?php 
-    if($this->session->flashdata('success')!=null)
-    {
-        ?>
-        <script type="text/javascript">
-            swal('success','<?php echo $this->session->flashdata("success") ?>','success');
-        </script>
-        <?php
-        $this->session->set_flashdata('success',null);
-    }
-    if($this->session->flashdata('error')!=null)
-    {
-        ?>
-        <script type="text/javascript">
-            swal('error','<?php echo $this->session->flashdata("error") ?>','error');
-        </script>
-        <?php
-        $this->session->set_flashdata('error',null);
-    }
-?>
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="mySmallModalLabel"> Add Fund</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" name="generateFunds" action="<?php echo base_url('Admin/Master/FundGenerate/GenerateFund'); ?>">
-                    <div class="content-area">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label> Fund </label>
-                                        <input type="number" name="fund" id="fund" class="form-control" required placeholder="Enter fund">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="btn-area pt-3" style="float: right;">
-                            <button type="submit" class="btn btn-success waves-effect waves-light">Add</button>
-                        </div>
-                    </div>        
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
-
-<script type="text/javascript">
-    getTotalFund();
-    function getTotalFund()
-    {
-        $.ajax({
-            url: '<?php echo base_url() ?>Admin/Master/FundGenerate/get_total_fund',
-            type: 'POST',
-            data: {},
-            success:function(res)
-            {
-                console.log(res);
-                $("#total_fund").html(res,);
-            }
-        });
-    }
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#fundTable').DataTable();
-    });
-</script>

@@ -44,7 +44,7 @@
                                     <div class="col-7">
                                         <div class="text-primary p-4">
                                             <h5 class="text-primary"> EARNING VISTA </h5>
-                                            <p>Member Login</p>
+                                            <p>Login</p>
                                         </div>
                                     </div>
                                     <div class="col-5 align-self-end">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="card-body pt-0"> 
                                 <div class="auth-logo">
-                                    <a href="index.html" class="auth-logo-light">
+                                    <a href="javascript::void();" class="auth-logo-light">
                                         <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
                                                 <img src="<?php echo base_url(); ?>assets/images/logo-light.svg" alt="" class="rounded-circle" height="34">
@@ -62,7 +62,7 @@
                                         </div>
                                     </a>
 
-                                    <a href="index.html" class="auth-logo-dark">
+                                    <a href="javascript::void();" class="auth-logo-dark">
                                         <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
                                                 <img src="<?php echo base_url(); ?>assets/images/logo.svg" alt="" class="rounded-circle" height="34">
@@ -89,7 +89,7 @@
                                         <div class="mt-3 d-grid">
                                             <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
 
-                                            <a href="<?php echo base_url('Member/MemberRegister'); ?>" class="btn btn-info waves-effect waves-light" type="button" style="margin-top: 10px;">Register Member</a>
+                                            <a href="<?php echo base_url('Member/MemberRegister'); ?>" class="btn btn-info waves-effect waves-light" type="button" style="margin-top: 10px;">Register Here</a>
                                         </div>
 
                                         <!-- <div class="mt-4 text-center">
