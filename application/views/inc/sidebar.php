@@ -40,7 +40,7 @@
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Member/MemberRegister/addMember'); ?>" key="t-user-grid">Registration</a></li>
                                     <li><a href="<?php echo base_url('Member/MemberRegister/MemberList'); ?>" key="t-user-grid">Member List</a></li>
-                                    <li><a href="javascript: void(0);" key="t-user-list">Activation</a></li>
+                                    <li><a href="<?php echo base_url('Admin/ActivationRequest'); ?>" key="t-user-list">Activation</a></li>
                                     <li><a href="javascript: void(0);" key="t-profile">Geonology</a></li>
                                     <li><a href="javascript: void(0);" key="t-profile">Team Bussiness</a></li>
                                 </ul>
@@ -123,6 +123,16 @@
                                     <li><a href="javascript: void(0);" key="t-buy">Income Wallet</a></li>
                                     <li><a href="javascript: void(0);" key="t-exchange">Withdrawal Wallet</a></li>
                                     <li><a href="javascript: void(0);" key="t-orders">Withdrawal History</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
+                                    <i class="bx bx-store"></i>
+                                    <span key="t-ecommerce">Pakages</span>
+                                </a>
+                                <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
+                                    <li><a href="<?php echo base_url('Member/Pakages') ?>" key="t-products">My Pakage</a></li>
                                 </ul>
                             </li>
 
