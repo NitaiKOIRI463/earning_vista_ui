@@ -44,7 +44,7 @@
                                     <div class="col-7">
                                         <div class="text-primary p-4">
                                             <h5 class="text-primary"> EARNING VISTA </h5>
-                                            <p>Member Login</p>
+                                            <!-- <p>Member Login</p> -->
                                         </div>
                                     </div>
                                     <div class="col-5 align-self-end">
@@ -89,7 +89,7 @@
                                         <div class="mt-3 d-grid">
                                             <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
 
-                                            <a href="<?php echo base_url('Member/MemberRegister'); ?>" class="btn btn-info waves-effect waves-light" type="button" style="margin-top: 10px;">Register Member</a>
+                                            <a href="<?php echo base_url('Member/MemberRegister'); ?>" class="btn btn-info waves-effect waves-light" type="button" style="margin-top: 10px;">Register Here</a>
                                         </div>
 
                                         <!-- <div class="mt-4 text-center">

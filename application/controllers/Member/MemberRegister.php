@@ -21,6 +21,8 @@
 
 		public function registerMember()
 		{
+			echo "<pre>";
+			print_r($_POST); die;
 			if($_FILES['photo']['size'] != '')
 			{
 				$profileImage = base64_encode(file_get_contents($_FILES['photo']['tmp_name']));	
@@ -29,7 +31,7 @@
 			}
 
 			$api = 'Member/addMember';
-			$data = 'name='.$_POST['name'].'&email_id='.$_POST['email'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&sponsor_id='.$_POST['sponsor_id'].'&side='.$_POST['side'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&photo='.$profileImage.'&address='.$_POST['address'].'&c_by='.$this->session->userdata('user_id');
+			$data = 'name='.$_POST['name'].'&email_id='.$_POST['email'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&sponsor_id='.$_POST['sponsor_id'].'&side='.$_POST['side'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&country_code='.$_POST['country_code'].'&address='.$_POST['address'].'&c_by='.$this->session->userdata('user_id');
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			if ($result['response_code']== 200) 
@@ -52,7 +54,7 @@
 			}
 
 			$api = 'Member/addMember';
-			$data = 'name='.$_POST['name'].'&email_id='.$_POST['email'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&sponsor_id='.$_POST['sponsor_id'].'&side='.$_POST['side'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&photo='.$profileImage.'&address='.$_POST['address'].'&c_by='.$this->session->userdata('user_id');
+			$data = 'name='.$_POST['name'].'&email_id='.$_POST['email'].'&f_h_name='.$_POST['fatherHusband_name'].'&mobile_no='.$_POST['number'].'&gender='.$_POST['gender'].'&sponsor_id='.$_POST['sponsor_id'].'&side='.$_POST['side'].'&country='.$_POST['country'].'&state='.$_POST['state'].'&country_code='.$_POST['country_code'].'&city='.$_POST['city'].'&pin='.$_POST['pincode'].'&photo='.$profileImage.'&address='.$_POST['address'].'&c_by='.$this->session->userdata('user_id');
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			if ($result['response_code']== 200) 

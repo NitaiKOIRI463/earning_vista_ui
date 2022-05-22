@@ -12,6 +12,12 @@
 		{
 			$d['v'] = "Admin/dashboard";
 			$this->load->view('templates',$d);
+		}
+
+		public function test()
+		{
+			$d['v'] = "test";
+			$this->load->view('templates',$d);
 		}	
 	}
 ?>
