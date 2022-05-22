@@ -24,7 +24,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Create New Member</h4>
+                            <h4 class="card-title mb-4">Package Activation Request</h4>
                             
                             <?php
 
@@ -35,7 +35,7 @@
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <strong>package</strong>
-                                                <select onchange="getPackagedata()" class="form-control" name="package_id" id="package_id"  required="">
+                                                <select onchange="getPackagedata();get_bitcoin_price();" class="form-control" name="package_id" id="package_id"  required="">
                                                     <option value="">Select Package</option>
                                                     <?php 
 
@@ -96,6 +96,13 @@
                                                 </table>
                                             </div>
                                         </div>
+                                        <div id="required_btc_buy" style="text-align: center;" class="col-lg-12">
+                                            <div class="form-group">
+                                                <hr>
+                                                <p><strong>Required BTC</strong></p>
+                                               <input type="text" name="btc_required" id="btc_required">
+                                            </div>
+                                        </div>
                                         <div id="btn_buy" style="text-align: center;display: none;" class="col-lg-12">
                                             <div class="form-group">
                                                 <hr>
@@ -116,14 +123,21 @@
                                          </section>
                                      </div>
                                      <div style="" class="col-lg-12">
-                                        <form id="update_address_form" action="wallet_refill_request.php" method="POST">
+                                        
                                            <!--  <input type="hidden" required="required" value="" name="update_id"> -->
+                                            <div id="required_btc_pay" style="text-align: center;" class="col-lg-12">
+                                                <div class="form-group">
+                                                    <hr>
+                                                    <p><strong>Required BTC</strong></p>
+                                                   <input type="text" name="btc_required_pay" id="btc_required_pay">
+                                                </div>
+                                            </div>
                                             <input type="hidden" value="update_address_form" name="update_address_form">
                                             <div class="row">
                                                
                                                <div style="margin: 10px;" class="col-md-8">
                                                   <strong>Transaction Hash</strong>
-                                                  <textarea required="required" class="form-control" name="transaction_hash"></textarea>
+                                                  <textarea required="required" class="form-control" name="transaction_hash" id="transaction_hash"></textarea>
                                                </div>
 
                                                <div style="margin: 10px;" class="col-md-8">
@@ -136,18 +150,20 @@
                                                </div>
                                                
                                                <div style="margin: 10px;" class="col-md-12">
-                                                  <button onclick="updateDetails()" type="button" class="btn btn-md btn-warning">Update Details</button>
+                                                  <button onclick="updatepackageTransactionData()" type="button" class="btn btn-md btn-warning">Update Details</button>
                                                </div>
                                             </div>
-                                       </form>
+                                       
                                      </div>
+                                     <script type="text/javascript">
+                                         $('#btc_required_pay').val('<?php echo $prevData[0]['required_btc']; ?>');
+                                         $('#btc_required_pay').prop('disabled',true);
+                                     </script>
 
                                     <?php
                                 }
 
                              ?>
-                            
-
 
                             
 
@@ -165,10 +181,118 @@
   border: 1px solid black;
 }
 </style>
+
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/phpqrcode/jquery.qrcode.min.js"></script>
 
+
+
+<?php 
+    
+    if(!empty($prevData))
+    {
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function(){
+              setInterval(function(){
+                 var t1 = new Date('<?php  if(isset($prevData[0]['c_date'])){echo $prevData[0]['c_date'];}else{echo date('Y-m-d H:i:s');}; ?>');
+                 var t2 = new Date();
+                 var dif = ( t2.getTime() - t1.getTime() ) / 1000;
+                 // console.log(dif)
+                 if((1800-Math.abs(dif).toFixed(0))<=0)
+                 {
+                    $.ajax({
+                        type:'POST',
+                        url:'<?php echo base_url(); ?>Member/ActivatioRequest/purchaseExpiredPackage',
+                        data:{id:'<?php echo $prevData[0]['id']; ?>'},
+                        success:function(res)
+                        {
+                            res = JSON.parse(res);
+                            if(res.response_code==200)
+                            {
+                              swal('success',res.msg,'success');
+                              setTimeout(()=>{window.location.href="<?php echo base_url(); ?>Member/ActivatioRequest"},1000)
+                           }else
+                           {
+                                swal('warning',res.msg,'warning');
+                           }
+                            
+                        }
+                    })
+                 }
+                 $('#remain_seconds').html((1800-Math.abs(dif).toFixed(0)));
+                 $('#remain_minutes').html(Math.abs((1800-Math.abs(dif).toFixed(0))/60).toFixed(0));
+              },1000);
+           });
+
+        function updatepackageTransactionData()
+        {
+          swal({
+               title: "Are you sure?",
+               text: "Please check all the details correctly before its submission",
+               icon: "warning",
+               buttons: true,
+               dangerMode: true,
+             })
+             .then((willDelete) => {
+               if (willDelete) {
+                
+                $.ajax({
+                    type:'POST',
+                    url:'<?php echo base_url(); ?>Member/ActivatioRequest/purchasePayemntPackage',
+                    data:{id:'<?php echo $prevData[0]['id'];  ?>',hash_code:$('#transaction_hash').val(),screenshot: $('#file_screenshot').val().split("base64,")[1]},
+                    success:function(res)
+                    {
+                        res = JSON.parse(res);
+                        if(res.response_code==200)
+                        {
+                          swal('success',res.msg,'success');
+                          console.log($('#file_screenshot').val().split('base64,')[1]);
+                          setTimeout(()=>{window.location.href="<?php echo base_url(); ?>Member/ActivatioRequest"},1000);
+                       }else
+                       {
+                            swal('warning',res.msg,'warning');
+                       }
+                        
+                    }
+                })
+
+               }
+             });
+        }
+        </script>
+        <?php
+    }
+
+ ?>
 <script type="text/javascript">
 
+
+function get_bitcoin_price()
+{
+    $.ajax({
+            type:'GET',
+            url:'https://bitpay.com/api/rates',
+            data:{},
+            success:function(res)
+            {
+                let package_price = $('#package_id').val().split("|")[2];
+                $.each(res,(i,v)=>{
+                    if(v.code=='USD')
+                    {
+    
+                        let btcActual = parseFloat(package_price)/parseFloat(v.rate);
+                        console.log(btcActual);
+                        let btc10PercTotal = btcActual + (10/100)*btcActual;
+                        btc10PercTotal = Math.abs(btc10PercTotal.toFixed(8));
+                        $('#btc_required').val(btc10PercTotal);
+
+                    }
+                });
+                
+            }
+        })
+
+}
 genearteQR();
 function genearteQR()
 {
@@ -194,21 +318,7 @@ function onFileSelected(event) {
     reader.readAsDataURL(selectedFile);
 }
 
-$(document).ready(function(){
-      setInterval(function(){
-         var t1 = new Date('<?php  if(isset($prevData[0]['c_date'])){echo $prevData[0]['c_date'];}else{echo date('Y-m-d H:i:s');}; ?>');
-         var t2 = new Date();
-         var dif = ( t2.getTime() - t1.getTime() ) / 1000;
-         // console.log(dif)
-         if((1800-Math.abs(dif).toFixed(0))<=0)
-         {
-            // $('#expire_hash_form').submit();
-            // alert("Expired");
-         }
-         $('#remain_seconds').html((1800-Math.abs(dif).toFixed(0)));
-         $('#remain_minutes').html(Math.abs((1800-Math.abs(dif).toFixed(0))/60).toFixed(0));
-      },1000);
-   });
+
 
 function generateAddress()
 {
@@ -225,7 +335,7 @@ function generateAddress()
         $.ajax({
             type:'POST',
             url:'<?php echo base_url(); ?>Member/ActivatioRequest/purchasePackage',
-            data:{package_id:$('#package_id').val().split("|")[0]},
+            data:{package_id:$('#package_id').val().split("|")[0],btc_required:$('#btc_required').val()},
             success:function(res)
             {
                 res = JSON.parse(res);
@@ -244,6 +354,8 @@ function generateAddress()
        }
      });
 }
+
+
 
 
 
@@ -266,6 +378,8 @@ function getPackagedata()
     $('#lbl_effected_to').html(packagedata[12]);
     $('#package_details').show();
     $('#btn_buy').show();
+    $('#option_type').show();
+    $('#btc_required').prop('disabled',true);
 
 }
 </script>
