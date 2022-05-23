@@ -42,7 +42,7 @@
                                     <li><a href="<?php echo base_url('Member/MemberRegister/MemberList'); ?>" key="t-user-grid">Member List</a></li>
                                     <li><a href="<?php echo base_url('Admin/ActivationRequest'); ?>" key="t-user-list">Activation</a></li>
                                     <li><a href="<?php echo base_url('Admin/ActivationRequest/ActivatioTreeDetails'); ?>" key="t-user-list">Activation Tree Details</a></li>
-                                    <li><a href="javascript: void(0);" key="t-profile">Geonology</a></li>
+                                    <li><a href="<?php echo base_url('Admin/Geonology'); ?>" key="t-profile">Geonology</a></li>
                                     <li><a href="javascript: void(0);" key="t-profile">Team Bussiness</a></li>
                                 </ul>
                             </li>
