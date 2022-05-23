@@ -73,18 +73,6 @@
                                     <li><a href="javascript: void(0);" key="t-editable-table">Invest V/S Return</a></li>
                                 </ul>
                             </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-user-circle"></i>
-                                    <span key="t-authentication">Setting</span>
-                                </a>
-                                <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);" key="t-login">Profile</a></li>
-                                    <li><a href="javascript: void(0);" key="t-login-2">Change Password</a></li>
-                                    <li><a href="<?php echo base_url('Admin/AdminLogin/logout'); ?>" key="t-register">Logout</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     <?php
                 }
@@ -134,18 +122,6 @@
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Member/Pakages') ?>" key="t-wallet">My Pakage</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-user-circle"></i>
-                                    <span key="t-authentication">Setting</span>
-                                </a>
-                                <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);" key="t-login">Profile</a></li>
-                                    <li><a href="<?php echo base_url('Member/TransectionPin'); ?>" key="t-login-2">Change Password</a></li>
-                                    <li><a href="<?php echo base_url('Member/MemberLogin/logout'); ?>" key="t-register">Logout</a></li>
                                 </ul>
                             </li>
 

@@ -1,3 +1,19 @@
+<style type="text/css">
+    #fundTable_paginate{
+        float: right;
+    }
+    #fundTable_previous{
+        margin: 5px;
+        cursor: pointer;
+    }
+    #fundTable_next{
+        margin: 5px;
+        cursor: pointer;
+    }
+    .paginate_button {
+        padding: 0px 5px;
+    }
+</style>
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
@@ -32,7 +48,7 @@
 
                                     <button type="button" class="btn btn-success waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm" style="float: right;margin-left: 5px;"> <i class="fas fa-plus-square"></i> Add</button>
 
-                                    <a href="<?php echo base_url('Admin/Master/FundGenerate/fund_historyList'); ?>" class="btn btn-primary waves-effect waves-light" style="float: right;"> Available Balance <span class="badge badge-pill badge-soft font-size-11" id="total_fund"></span><span>$</span></a>
+                                    <a href="javascript::void();" class="btn btn-primary waves-effect waves-light" style="float: right;"> Available Balance <span class="badge badge-pill badge-soft font-size-11" id="total_fund"></span><span>$</span></a>
                                 </div>
                             </div>
 

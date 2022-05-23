@@ -21,7 +21,7 @@
                                 <img src="<?php echo base_url(); ?>assets/images/logo-light.svg" alt="" height="22">
                             </span>
                             <span class="logo-lg">
-                                <h2 style="padding-top: 15px;font-weight: bold;color: #52dcd3;">Earning <span style="color: gold;font-weight: bold;">Vista</span></h2>
+                                <h2 style="padding-top: 15px;font-weight: bold;color: #52dcd3;">Earn <span style="color: gold;font-weight: bold;">Vista</span></h2>
                                 <!-- <img src="<?php echo base_url(); ?>assets/images/logo-light.png" alt="" height="19"> -->
                             </span>
                         </a>
@@ -61,11 +61,15 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <div class="dropdown-divider"></div>
+                            <!-- <div class="dropdown-divider"></div> -->
                             <?php 
                                 if ($_SESSION['role_type'] == 1) 
                                 {
                                     ?>
+                                        <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
+
+                                        <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-my-wallet">Change Password</span></a>
+
                                         <a class="dropdown-item text-danger" href="<?php echo base_url('Admin/AdminLogin/logout'); ?>"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span>
                                         </a>
                                     <?php
@@ -73,6 +77,10 @@
                                 else if($_SESSION['role_type'] == 2)
                                 {
                                     ?>
+                                        <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
+
+                                        <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-my-wallet">Change Password</span></a>
+
                                        <a class="dropdown-item text-danger" href="<?php echo base_url('Member/MemberLogin/logout'); ?>"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span>
                                         </a> 
                                     <?php

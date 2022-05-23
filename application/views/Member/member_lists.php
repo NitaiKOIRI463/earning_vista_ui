@@ -1,3 +1,20 @@
+<style type="text/css">
+    #memberTable_paginate{
+        float: right;
+    }
+    #fundTable_previous{
+        margin: 5px;
+        cursor: pointer;
+    }
+    #fundTable_next{
+        margin: 5px;
+        cursor: pointer;
+    }
+    .paginate_button {
+        padding: 0px 5px;
+    }
+</style>
+
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
@@ -53,7 +70,7 @@
                                             <th>State</th>
                                             <th>City</th>
                                             <th>Block Status</th>
-                                            <th style="text-align: center;" colspan="3">Action</th>
+                                            <th >Action</th>
                                         </tr>
                                     </thead>
                                     <tbody style="font-size: 11px;">
