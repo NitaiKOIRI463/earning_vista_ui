@@ -98,7 +98,7 @@
                                     <li><a href="<?php echo base_url('Member/MemberRegister/addMember'); ?>" key="t-products">Register</a></li>
                                     <li><a href="<?php echo base_url('Member/ActivatioRequest'); ?>" key="t-products">Activation Request</a></li>
                                     <li><a href="<?php echo base_url('Admin/Geonology'); ?>" key="t-products">Genology</a></li>
-                                    <li><a href="javascript::void();" key="t-products">Team Bussiness </a></li>
+                                    <li><a href="<?php echo base_url('Member/TeamBussiness'); ?>" key="t-products">Team Bussiness </a></li>
                                 </ul>
                             </li>
 
