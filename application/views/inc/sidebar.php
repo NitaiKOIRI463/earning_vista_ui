@@ -97,8 +97,19 @@
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Member/MemberRegister/addMember'); ?>" key="t-products">Register</a></li>
                                     <li><a href="<?php echo base_url('Member/ActivatioRequest'); ?>" key="t-products">Activation Request</a></li>
-                                    <li><a href="javascript::void();" key="t-products">Genology</a></li>
+                                    <li><a href="<?php echo base_url('Admin/Geonology'); ?>" key="t-products">Genology</a></li>
                                     <li><a href="javascript::void();" key="t-products">Team Bussiness </a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
+                                    <i class="bx bx-briefcase-alt-2"></i>
+                                    <span key="t-projects">Opportunity</span>
+                                </a>
+                                <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                    <li><a href="projects-grid.html" key="t-p-grid">My Opportunity</a></li>
+                                    <li><a href="projects-list.html" key="t-p-list">Buy Opportunity</a></li>
                                 </ul>
                             </li>
 
