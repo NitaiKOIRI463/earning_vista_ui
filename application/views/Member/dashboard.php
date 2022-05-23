@@ -10,7 +10,7 @@
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Member > </a></li>
+                                <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">Member > </a></li> -->
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
@@ -63,9 +63,6 @@
                                                 <p class="text-muted mb-0">ABCD</p>
                                             </div>
                                         </div>
-                                        <!-- <div class="mt-4">
-                                            <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +98,7 @@
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Orders</p>
+                                            <p class="text-muted fw-medium">Total ROI</p>
                                             <h4 class="mb-0">1,235</h4>
                                         </div>
 
@@ -121,7 +118,7 @@
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Revenue</p>
+                                            <p class="text-muted fw-medium">Total Income</p>
                                             <h4 class="mb-0">$35, 723</h4>
                                         </div>
 
@@ -141,7 +138,68 @@
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Average Price</p>
+                                            <p class="text-muted fw-medium">Total Matching</p>
+                                            <h4 class="mb-0">$16.2</h4>
+                                        </div>
+
+                                        <div class="flex-shrink-0 align-self-center">
+                                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                <span class="avatar-title rounded-circle bg-primary">
+                                                    <i class="bx bx-purchase-tag-alt font-size-24"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mini-stats-wid">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <p class="text-muted fw-medium">Total Group Income</p>
+                                            <h4 class="mb-0">$16.2</h4>
+                                        </div>
+
+                                        <div class="flex-shrink-0 align-self-center">
+                                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                <span class="avatar-title rounded-circle bg-primary">
+                                                    <i class="bx bx-purchase-tag-alt font-size-24"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mini-stats-wid">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <p class="text-muted fw-medium">Total Transfer/Withdrawal</p>
+                                            <h4 class="mb-0">$16.2</h4>
+                                        </div>
+
+                                        <div class="flex-shrink-0 align-self-center">
+                                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                <span class="avatar-title rounded-circle bg-primary">
+                                                    <i class="bx bx-purchase-tag-alt font-size-24"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mini-stats-wid">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <p class="text-muted fw-medium">Direct Referal</p>
+
                                             <h4 class="mb-0">$16.2</h4>
                                         </div>
 
