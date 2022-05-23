@@ -43,7 +43,7 @@
                                 <div class="row">
                                     <div class="col-7">
                                         <div class="text-primary p-4">
-                                            <h5 class="text-primary"> EARNING VISTA </h5>
+                                            <h5 class="text-primary"> EARN VISTA </h5>
                                             <p>Admin Login</p>
                                         </div>
                                     </div>

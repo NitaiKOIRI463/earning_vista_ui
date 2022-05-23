@@ -24,7 +24,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Register New Member</h4>
+                            <h4 class="card-title mb-4">New Registration</h4>
                             <form id="adminMemReg" name="adminMemReg" method="POST" action="<?php echo base_url('Member/MemberRegister/adminMember_register'); ?>" enctype="multipart/form-data">
                                 <div class="content-area">
                                     <div class="col-lg-12">

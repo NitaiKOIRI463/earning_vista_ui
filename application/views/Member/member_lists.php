@@ -53,7 +53,7 @@
                                             <th>State</th>
                                             <th>City</th>
                                             <th>Block Status</th>
-                                            <th>Action</th>
+                                            <th style="text-align: center;" colspan="3">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody style="font-size: 11px;">
@@ -97,24 +97,24 @@
                                                             }
                                                             ?>
                                                             
-                                                            <td>
-                                                                <a id="<?php echo $list['member_id']; ?>" onclick="editMember(this.id);" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm" style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-pen-square"></i>
+                                                            <td style="padding: 1px;">
+                                                                <a id="<?php echo $list['member_id']; ?>" onclick="editMember(this.id);" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm" style="padding: 0px 5px;font-size: 13px;"> <i class="fas fa-pen-square"></i>
                                                                 </a>
 
-                                                                <a id="<?php echo $list['member_id']; ?>" onclick="deleteMember(this.id);" class="btn btn-danger waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-trash"></i>
+                                                                <a id="<?php echo $list['member_id']; ?>" onclick="deleteMember(this.id);" class="btn btn-danger waves-effect waves-light"style="padding: 0px 5px;font-size: 13px;"> <i class="fas fa-trash"></i>
                                                                 </a>
 
                                                                 <?php 
                                                                     if($list['block_status'] == 0)
                                                                     {
                                                                         ?>
-                                                                        <a id="<?php echo $list['member_id']; ?>" onclick="unblockMember(this.id);" class="btn btn-warning waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-ban"></i>
+                                                                        <a id="<?php echo $list['member_id']; ?>" onclick="unblockMember(this.id);" class="btn btn-warning waves-effect waves-light"style="padding: 0px 5px;font-size: 13px;margin-top: 2px;"> <i class="fas fa-ban"></i>
                                                                         </a>
                                                                         <?php
                                                                     }else if($list['block_status'] == 1)
                                                                     {
                                                                         ?>
-                                                                        <a id="<?php echo $list['member_id']; ?>" onclick="blockMember(this.id);" class="btn btn-success waves-effect waves-light"style="padding: 0px 5px;font-size: 15px;"> <i class="fas fa-ban"></i>
+                                                                        <a id="<?php echo $list['member_id']; ?>" onclick="blockMember(this.id);" class="btn btn-success waves-effect waves-light"style="padding: 0px 5px;font-size: 13px;margin-top: 2px;"> <i class="fas fa-ban"></i>
                                                                         </a>
                                                                         <?php
                                                                     }
