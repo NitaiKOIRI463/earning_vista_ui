@@ -104,6 +104,81 @@
     </form>
  </div>
 </div>
+
+<div id="myModal3" class="modal">
+ <span style="color:white!important;" onclick="closeActivetBox()" class="close">X</span>
+ <div class="modal-content" class="card card-body">
+    <form  method="post" action="wallet_refill_request.php">
+       <div  class="row">
+          <div class="col-md-12">
+             <table class="table table-responsive" style="border: 1px solid gray;text-align: center;">
+                <thead>
+                    <tr>
+                        <th colspan="6" style="background-color: slategray;">
+                           <h5 style="text-align: center;color: white;">Effect Details</h5>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="6" style="background-color: aliceblue;">
+                           <h5 style="text-align: center;"> <span id="leave_span"></span>Sponsor Commision</h5>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid gray;">Sr. No.</th>
+                        <th style="border: 1px solid gray;">Sponsor Id</th>
+                        <th style="border: 1px solid gray;">Sponsor Name</th>
+                        <th style="border: 1px solid gray;">Package Total</th>
+                        <th style="border: 1px solid gray;">Com. %</th>
+                        <th style="border: 1px solid gray;">Commision</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid gray;">1</td>
+                        <td style="border: 1px solid gray;">EV1001</td>
+                        <td style="border: 1px solid gray;">Samir</td>
+                        <td style="border: 1px solid gray;">50000</td>
+                        <td style="border: 1px solid gray;">5</td>
+                        <td style="border: 1px solid gray;">3000</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="6" style="background-color: aliceblue;">
+                           <h5 style="text-align: center;">Level Distribution Details</h5>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid gray;">Sr. No.</th>
+                        <th style="border: 1px solid gray;">Member Id</th>
+                        <th style="border: 1px solid gray;">Member Name</th>
+                        <th style="border: 1px solid gray;">Level</th>
+                        <th style="border: 1px solid gray;">Com. %</th>
+                        <th style="border: 1px solid gray;">Total Commission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid gray;"><input type="checkbox" name=""></td>
+                        <td style="border: 1px solid gray;">EV1001</td>
+                        <td style="border: 1px solid gray;">Samir</td>
+                        <td style="border: 1px solid gray;">50000</td>
+                        <td style="border: 1px solid gray;">5</td>
+                        <td style="border: 1px solid gray;">3000</td>
+                    </tr>
+                </tbody>
+            </table> 
+          </div>
+          <div style="padding: 10px;text-align: center;" class="col-md-12">
+             <button type="submit" name="cancelSubmit" class="btn btn-md btn-danger">Confirm</button>
+             <button onclick="closeRejectBox()" type="button" class="btn btn-md btn-warning">Cancel</button>
+          </div>
+       </div>
+    </form>
+ </div>
+</div>
+
+
 <div id="myModal" class="modal">
      <span style="color:white!important;" onclick="closeImageBox()" class="close">X</span>
      <img class="modal-content" id="img01">
@@ -240,6 +315,7 @@
 
    var modal = document.getElementById("myModal");
    var modal2 = document.getElementById("myModal2");
+   var modal3 = document.getElementById("myModal3");
    
    // Get the image and insert it inside the modal - use its "alt" text as a caption
    var modalImg = document.getElementById("img01");
@@ -274,6 +350,12 @@
    {
         document.getElementById("myModal").style.display = "none";
    }
+
+   function closeActivetBox()
+   {
+        document.getElementById("myModal3").style.display = "none";
+   }
+   
    
    function copyNow(id)
    {
@@ -294,7 +376,8 @@
         })
         .then((willDelete) => {
           if (willDelete) {
-           document.getElementById('approve_'+id).submit();
+            modal3.style.display = "block";
+           // document.getElementById('approve_'+id).submit();
           }
         });
       
