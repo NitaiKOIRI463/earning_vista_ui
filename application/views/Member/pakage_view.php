@@ -1,3 +1,20 @@
+<style type="text/css">
+    #pakageTable_paginate{
+        float: right;
+    }
+    #fundTable_previous{
+        margin: 5px;
+        cursor: pointer;
+    }
+    #fundTable_next{
+        margin: 5px;
+        cursor: pointer;
+    }
+    .paginate_button {
+        padding: 0px 5px;
+    }
+</style>
+
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">

@@ -108,8 +108,8 @@
                                     <span key="t-projects">Opportunity</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="projects-grid.html" key="t-p-grid">My Opportunity</a></li>
-                                    <li><a href="projects-list.html" key="t-p-list">Buy Opportunity</a></li>
+                                    <li><a href="<?php echo base_url('Member/Pakages'); ?>" key="t-p-grid">My Opportunity</a></li>
+                                    <li><a href="javascript::void();" key="t-p-list">Buy Opportunity</a></li>
                                 </ul>
                             </li>
 
@@ -129,31 +129,44 @@
                                     <i class="bx bx-home-circle"></i>
                                     <span key="t-dashboards">Top Up</span>
                                 </a>
-                            </li>    
+                            </li>
 
-                            <!-- <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-bitcoin"></i>
-                                    <span key="t-crypto">Wallets</span>
+                            <li class="">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
+                                    <i class="bx bx-file"></i>
+                                    <span key="t-utility">My Bussiness</span>
                                 </a>
-                                <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);" key="t-wallet">Maturity Wallet</a></li>
-                                    <li><a href="javascript: void(0);" key="t-buy">Income Wallet</a></li>
-                                    <li><a href="javascript: void(0);" key="t-exchange">Withdrawal Wallet</a></li>
-                                    <li><a href="javascript: void(0);" key="t-orders">Withdrawal History</a></li>
+                                <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
+                                    <li><a href="#" key="t-starter-page">Direct Refrral</a></li>
+                                    <li><a href="#" key="t-maintenance">Group Bussiness</a></li>
+                                    <li><a href="#" key="t-coming-soon">Geonology</a></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
                                     <i class="bx bx-bitcoin"></i>
-                                    <span key="t-crypto">Pakage</span>
+                                    <span key="t-crypto">Withdrawal</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="<?php echo base_url('Member/Pakages') ?>" key="t-wallet">My Pakage</a></li>
+                                    <li><a href="#" key="t-wallet">Make Withdrawal</a></li>
+                                    <li><a href="#" key="t-buy">Withdrawal History</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
 
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                                    <i class="bx bx-detail"></i>
+                                    <span key="t-blog">Activity</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                                    <i class="bx bx-user-circle"></i>
+                                    <span key="t-authentication">Help/Contact Us</span>
+                                </a>
+                            </li>  
                         </ul> 
                     <?php
                 }

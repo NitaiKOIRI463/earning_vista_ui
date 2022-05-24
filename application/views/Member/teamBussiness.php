@@ -1,3 +1,23 @@
+<style type="text/css">
+    #leftTbalepage_paginate{
+        float: right;
+    }
+    #rightSide_table_paginate{
+        float: right;
+    }
+    #fundTable_previous{
+        margin: 5px;
+        cursor: pointer;
+    }
+    #fundTable_next{
+        margin: 5px;
+        cursor: pointer;
+    }
+    .paginate_button {
+        padding: 0px 5px;
+    }
+</style>
+
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
@@ -24,7 +44,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row" style="padding-bottom: 20px;">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Member Id</label>
@@ -37,16 +57,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body pt-2">
+                            <div class="card-body pt-2" style="border: 1px solid gray;">
                                 <div class="efffect-details">
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-6">
-                                               <table  class="table table-responsive" style="border: 1px solid gray;text-align: center;">
+                                               <table id="leftTbalepage" class="table table-responsive" style="border: 1px solid gray;text-align: center;">
                                                     <thead>
                                                         <tr style="background-color: aliceblue;">
-                                                            <th colspan="4">
-                                                                <h3>Left Side</h3>
+                                                            <th colspan="4" style="padding: 5px;">
+                                                                <h4>Left Side</h4>
                                                             </th>
                                                         </tr>
                                                         <tr>
@@ -63,11 +83,11 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                               <table class="table table-responsive" style="border: 1px solid gray;text-align: center;">
+                                               <table id="rightSide_table" class="table table-responsive" style="border: 1px solid gray;text-align: center;">
                                                     <thead>
                                                         <tr style="background-color: aliceblue;">
-                                                            <th colspan="4">
-                                                                <h3>Right Side</h3>
+                                                            <th colspan="4" style="padding: 5px;">
+                                                                <h4>Right Side</h4>
                                                             </th>
                                                         </tr>
                                                         <tr>
@@ -101,7 +121,6 @@
     getteamBussiness();
     function getteamBussiness()
     {
-        debugger
         var memberId = $('#member_id').val();
         member_id = memberId==''?ses_member_id:memberId;
                 
@@ -143,10 +162,20 @@
                     });
                 }
                 else{
-                     $('#tableLeft').html('<tr colspan="4" style="text-align: center;"><td> No Record Found !!</td></tr>');
-                     $('#tableRight').html('<tr colspan="4" style="text-align: center;"><td> No Record Found !!</td></tr>');
+                     $('#tableLeft').html('<tr colspan="4"><td style="text-align: center;"> No Record Found !!</td></tr>');
+                     $('#tableRight').html('<tr colspan="4"><td style="text-align: center;"> No Record Found !!</td></tr>');
                 }
             }
         });
     }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#leftTbalepage').DataTable();
+    });
+
+    $(document).ready(function () {
+        $('#rightSide_table').DataTable();
+    });
 </script>
