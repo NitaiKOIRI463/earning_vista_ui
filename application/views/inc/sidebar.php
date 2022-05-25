@@ -53,9 +53,9 @@
                                     <span key="t-crypto">Wallets</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                    <li><a href="javascript: void(0);" key="t-exchange">Withdrawal Request</a></li>
                                     <li><a href="javascript: void(0);" key="t-wallet">Income Wallet</a></li>
                                     <li><a href="javascript: void(0);" key="t-buy">Withdrawal Wallet</a></li>
-                                    <li><a href="javascript: void(0);" key="t-exchange">Withdrawal Request</a></li>
                                     <li><a href="javascript: void(0);" key="t-lending">Withdrawal Transfer</a></li>
                                     <li><a href="javascript: void(0);" key="t-orders">Withdrawal History</a></li>
                                 </ul>
