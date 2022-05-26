@@ -2,14 +2,14 @@
     #leftTbalepage_paginate{
         float: right;
     }
-    #rightSide_table_paginate{
+    #leftTbalepage_paginate{
         float: right;
     }
-    #fundTable_previous{
+    #leftTbalepage_previous{
         margin: 5px;
         cursor: pointer;
     }
-    #fundTable_next{
+    #leftTbalepage_next{
         margin: 5px;
         cursor: pointer;
     }

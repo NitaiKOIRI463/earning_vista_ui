@@ -43,7 +43,7 @@
                                     <li><a href="<?php echo base_url('Admin/ActivationRequest'); ?>" key="t-user-list">Activation</a></li>
                                     <li><a href="<?php echo base_url('Admin/ActivationRequest/ActivatioTreeDetails'); ?>" key="t-user-list">Activation Tree Details</a></li>
                                     <li><a href="<?php echo base_url('Admin/Geonology'); ?>" key="t-profile">Geonology</a></li>
-                                    <li><a href="javascript: void(0);" key="t-profile">Team Bussiness</a></li>
+                                    <li><a href="<?php echo base_url('Member/TeamBussiness'); ?>" key="t-profile">Team Bussiness</a></li>
                                 </ul>
                             </li>
 
@@ -53,7 +53,7 @@
                                     <span key="t-crypto">Wallets</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);" key="t-exchange">Withdrawal Request</a></li>
+                                    <li><a href="<?php echo base_url('Admin/WithdrawalRequest'); ?>" key="t-exchange">Withdrawal Request</a></li>
                                     <li><a href="javascript: void(0);" key="t-wallet">Income Wallet</a></li>
                                     <li><a href="javascript: void(0);" key="t-buy">Withdrawal Wallet</a></li>
                                     <li><a href="javascript: void(0);" key="t-lending">Withdrawal Transfer</a></li>
@@ -149,7 +149,7 @@
                                     <span key="t-crypto">Withdrawal</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="#" key="t-wallet">Make Withdrawal</a></li>
+                                    <li><a href="<?php echo base_url('Member/Withdrawal'); ?>" key="t-wallet">Make Withdrawal</a></li>
                                     <li><a href="#" key="t-buy">Withdrawal History</a></li>
                                 </ul>
                             </li>
