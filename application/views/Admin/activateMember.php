@@ -108,16 +108,11 @@
 <div id="myModal3" class="modal">
  <span style="color:white!important;" onclick="closeActivetBox()" class="close">X</span>
  <div class="modal-content" class="card card-body">
-    <form  method="post" action="wallet_refill_request.php">
+    <form id="commission_form" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>Admin/ActivationRequest/saveCommission">
        <div  class="row">
           <div class="col-md-12">
-             <table class="table table-responsive" style="border: 1px solid gray;text-align: center;">
+             <table style="border: 1px solid gray;text-align: center;width: 100%;">
                 <thead>
-                    <tr>
-                        <th colspan="6" style="background-color: slategray;">
-                           <h5 style="text-align: center;color: white;">Effect Details</h5>
-                        </th>
-                    </tr>
                     <tr>
                         <th colspan="6" style="background-color: aliceblue;">
                            <h5 style="text-align: center;"> <span id="leave_span"></span>Sponsor Commision</h5>
@@ -132,20 +127,43 @@
                         <th style="border: 1px solid gray;">Commision</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td style="border: 1px solid gray;">1</td>
-                        <td style="border: 1px solid gray;">EV1001</td>
-                        <td style="border: 1px solid gray;">Samir</td>
-                        <td style="border: 1px solid gray;">50000</td>
-                        <td style="border: 1px solid gray;">5</td>
-                        <td style="border: 1px solid gray;">3000</td>
-                    </tr>
+                <tbody id="sponser_data">
+                    
                 </tbody>
+                </table>
+
+                <table style="border: 1px solid gray;text-align: center;width: 100%;">
                 <thead>
                     <tr>
-                        <th colspan="6" style="background-color: aliceblue;">
-                           <h5 style="text-align: center;">Level Distribution Details</h5>
+                        <th colspan="11" style="background-color: aliceblue;">
+                           <h5 style="text-align: center;"> <span id="leave_span"></span>ROI Details</h5>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid gray;">Sr. No.</th>
+                        <th style="border: 1px solid gray;">Package Id</th>
+                        <th style="border: 1px solid gray;">Member Id</th>
+                        <th style="border: 1px solid gray;">Member Name</th>
+                        <th style="border: 1px solid gray;">Package Amt.</th>
+                        <th style="border: 1px solid gray;">ROI %</th>
+                        <th style="border: 1px solid gray;">ROI Amt.</th>
+                        <th style="border: 1px solid gray;">Days</th>
+                        <th style="border: 1px solid gray;">Total</th>
+                        <th style="border: 1px solid gray;">Activate On</th>
+                        <th style="border: 1px solid gray;">Expire On</th>
+                    </tr>
+                </thead>
+                <tbody id="roi_data">
+
+                        <th style="border: 1px solid gray;">Days</th>                    
+                </tbody>
+                </table>
+
+                <table style="border: 1px solid gray;text-align: center;width: 100%;">
+                <thead>
+                    <tr>
+                        <th colspan="9" style="background-color: aliceblue;">
+                           <h5 style="text-align: center;"> <span id="leave_span"></span>Matching Commossion</h5>
                         </th>
                     </tr>
                     <tr>
@@ -153,24 +171,20 @@
                         <th style="border: 1px solid gray;">Member Id</th>
                         <th style="border: 1px solid gray;">Member Name</th>
                         <th style="border: 1px solid gray;">Level</th>
+                        <th style="border: 1px solid gray;">Match. Amt.</th>
                         <th style="border: 1px solid gray;">Com. %</th>
                         <th style="border: 1px solid gray;">Total Commission</th>
+                        <th style="border: 1px solid gray;">Status</th>
+                        <th style="border: 1px solid gray;">Remarks</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td style="border: 1px solid gray;"><input type="checkbox" name=""></td>
-                        <td style="border: 1px solid gray;">EV1001</td>
-                        <td style="border: 1px solid gray;">Samir</td>
-                        <td style="border: 1px solid gray;">50000</td>
-                        <td style="border: 1px solid gray;">5</td>
-                        <td style="border: 1px solid gray;">3000</td>
-                    </tr>
+                <tbody id="matching_data">
+                    
                 </tbody>
             </table> 
           </div>
           <div style="padding: 10px;text-align: center;" class="col-md-12">
-             <button type="submit" name="cancelSubmit" class="btn btn-md btn-danger">Confirm</button>
+             <button type="button" name="commission_form" onclick="commission()" class="btn btn-md btn-danger">Confirm</button>
              <button onclick="closeRejectBox()" type="button" class="btn btn-md btn-warning">Cancel</button>
           </div>
        </div>
@@ -184,6 +198,28 @@
      <img class="modal-content" id="img01">
      <div id="caption"></div>
 </div>
+
+<?php 
+    if($this->session->flashdata('success')!=null)
+    {
+        ?>
+        <script type="text/javascript">
+            swal('success','<?php echo $this->session->flashdata("success") ?>','success');
+        </script>
+        <?php
+        $this->session->set_flashdata('success',null);
+    }
+    if($this->session->flashdata('error')!=null)
+    {
+        ?>
+        <script type="text/javascript">
+            swal('error','<?php echo $this->session->flashdata("error") ?>','error');
+        </script>
+        <?php
+        $this->session->set_flashdata('error',null);
+    }
+?>
+        
 <style type="text/css">
    input{
       color: black!important;
@@ -312,7 +348,22 @@
 
     }
 
+    function commission()
+   {
 
+        swal({
+          title: "Are you sure?",
+          text: "",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+           document.getElementById('commission_form').submit();
+          }
+        });
+   }
    var modal = document.getElementById("myModal");
    var modal2 = document.getElementById("myModal2");
    var modal3 = document.getElementById("myModal3");
@@ -365,6 +416,9 @@
       $('#copy_'+id).html(' Copied');
    }
 
+
+  
+
    function sumbitForm(id)
    {
       swal({
@@ -376,6 +430,97 @@
         })
         .then((willDelete) => {
           if (willDelete) {
+            $.ajax({
+                type:'POST',
+                url:'<?php echo base_url(); ?>Admin/ActivationRequest/get_activate_commission_data',
+                data:{user_request_id: id},
+                success:function(res)
+                {
+                    res = JSON.parse(res);
+                    if(res.response_code==200)
+                    {
+                        
+                        if(res.data.sponser_income.sponser_member_id!=undefined)
+                        {   
+                            $('#sponser_data').html('');
+                           $('#sponser_data').append('<tr>'+
+                                '<td style="border: 1px solid gray;"><input checked="checked" type="checkbox" value="'+res.data.sponser_income.sponser_member_id+'" name="sponserParent">'+
+                                '<input type="hidden" value="'+res.data.sponser_income.sponser_member_id+'|'+res.data.roi.member_id+'|'+res.data.sponser_income.total_commisson+'|'+res.data.roi.package_amount+'|'+res.data.sponser_income.sponser_income_perc+'" name="sponser">'+
+                                '</td>'+
+                                '<td style="border: 1px solid gray;">'+res.data.sponser_income.sponser_member_id+'</td>'+
+                                '<td style="border: 1px solid gray;">'+res.data.sponser_income.sponser_name+'</td>'+
+                                '<td style="border: 1px solid gray;">'+res.data.sponser_income.pkg_amount+'</td>'+
+                                '<td style="border: 1px solid gray;">'+res.data.sponser_income.sponser_perc+'%</td>'+
+                                '<td style="border: 1px solid gray;">'+res.data.sponser_income.total_commisson+'</td>'+
+                            '</tr>');
+                        }else
+                        {
+                            $('#sponser_data').append('<tr><td colspan="6">No Record Found</td></tr>');
+                        }
+
+                        if(res.data.roi!=null)
+                        {   
+                           $('#roi_data').html('');
+                           $('#roi_data').append('<tr>'+
+                                    '<td style="border: 1px solid gray;">1'+
+                                    '<input type="hidden" name="reg_id" value="'+res.data.roi.reg_id+'" >'+
+                                    '<input type="hidden" name="package_amount" value="'+res.data.roi.package_amount+'" >'+
+                                    '<input type="hidden" name="activate_date" value="'+res.data.roi.activate_date+'" >'+
+                                    '<input type="hidden" name="expiry_date" value="'+res.data.roi.expiry_date+'" >'+
+                                    '</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.package_id+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.member_id+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.name+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.package_amount+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.roi_perc+'%</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.roi_amount+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.roi_days+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.total_return+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.activate_date+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+res.data.roi.expiry_date+'</td>'+
+                                '</tr>');
+                        }else
+                        {
+                            $('#roi_data').append('<tr><td colspan="6">No Record Found</td></tr>');
+                        }
+                        
+
+                        if(res.data.matching_income.length)
+                        {   
+                            $('#matching_data').html('');
+                            $.each(res.data.matching_income,function(i,v){
+
+                                $('#matching_data').append('<tr>'+
+                                    '<td style="border: 1px solid gray;"><input checked="checked" type="checkbox" value="'+v.parent_id+'" name="machingParent[]">'+
+                                    '<input type="hidden" value="'+v.parent_id+'|'+v.parent_level+'|'+v.matching_amount+'|'+v.matching_perc+'|'+v.commission+'|'+v.maching_status+'|'+v.remarks+'|'+res.data.roi.member_id+'|'+v.side+'" name="maching[]">'+
+                                    '</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.parent_id+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.parent_name+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.parent_level+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.matching_amount+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.matching_perc+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.commission+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.maching_status+'</td>'+
+                                    '<td style="border: 1px solid gray;">'+v.remarks+'</td>'+
+                                '</tr>');
+
+                            });
+                           
+                        }else
+                        {
+                            $('#matching_data').append('<tr><td colspan="7">No Record Found</td></tr>');
+                        }
+
+
+
+
+                    }else
+                    {
+                        swal('error',res.msg,'error');
+                    }
+                    
+                    }
+                });
             modal3.style.display = "block";
            // document.getElementById('approve_'+id).submit();
           }

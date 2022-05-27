@@ -21,8 +21,9 @@
 			$data = 'member_id='.$this->session->userdata('user_id');
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
+			
 			$d['prevData'] = $result['data'];
-			// print_r($d['prevData']);die;
+			
 			$api = 'Package/get_bitcoin_address';
 			$data = '';
 			$method = 'POST';

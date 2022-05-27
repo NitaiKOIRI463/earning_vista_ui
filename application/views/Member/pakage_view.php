@@ -90,7 +90,12 @@
                                                         }else if($list['current_status'] == 'active')
                                                         {
                                                             ?>
-                                                                 <span class="badge badge-pill badge-soft-success font-size-11">Pending</span>
+                                                                 <span class="badge badge-pill badge-soft-success font-size-11">Active</span>
+                                                            <?php
+                                                        }else if($list['current_status'] == 'reject')
+                                                        {
+                                                            ?>
+                                                                 <span class="badge badge-pill badge-soft-success font-size-11">Reject</span>
                                                             <?php
                                                         }
                                                         ?>
