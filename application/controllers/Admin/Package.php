@@ -20,6 +20,26 @@
 			$this->load->view('templates',$d);
 		}
 
+		public function AddPackageData()
+		{
+			$api = 'Plan/addPackage';
+			$data = 'package_name='.$this->input->post('package_name').'&package_amount='.$this->input->post('package_amount').'&profit_perc='.$this->input->post('profit').'&roi_perc='.$this->input->post('roi').'&sponsor_income='.$this->input->post('sponsor_income').'&matching_perc='.$this->input->post('matching').'&capping='.$this->input->post('capping').'&effected_from='.$this->input->post('effect_from').'&effected_to='.$this->input->post('effect_to').'&c_by='.$this->session->userdata('user_id');
+			$method = 'POST';
+			// echo "<pre>";
+			// print_r($data); die;
+			$result = $this->CallAPI($api, $data, $method);
+			if($result['response_code'] == 200)
+            {
+                $this->session->set_flashdata('success', $result['msg']);
+                redirect('Admin/Package');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', $result['msg']);
+                redirect('Admin/Package');
+            }
+		}
+
 		public function edit_package_details()
 		{
 			$api = 'Plan/getPlanList';
@@ -27,7 +47,6 @@
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			$d['packagedata'] = $result['data'];
-
 			$this->load->view('ajax/ajax_editPakage_details',$d);
 		}
 

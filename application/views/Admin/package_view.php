@@ -96,7 +96,7 @@
                                                     <td><?php echo $p_list['effected_to']; ?></td>
 
                                                     <td id="<?php echo $p_list['package_id']; ?>" onclick="editPackage(this.id);" style="padding: 1px;padding-top: 2%;">
-                                                        <a class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-sm" style="padding: 0px 5px;font-size: 13px;"> <i class="fas fa-pen-square"></i>
+                                                        <a class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#editPackages" style="padding: 0px 5px;font-size: 13px;"> <i class="fas fa-pen-square"></i>
                                                                 </a>
 
                                                         <a id="<?php echo $p_list['id']; ?>" onclick="deletePackage(this.id);" class="btn btn-danger waves-effect waves-light"style="padding: 0px 5px;font-size: 13px;"> <i class="fas fa-trash"></i>
@@ -155,7 +155,7 @@
             </div>
             <div class="modal-body">
                 <div class="content">
-                    <form method="POST" name="generateFunds" action="#">
+                    <form method="POST" name="generateFunds" action="<?php echo base_url('Admin/Package/AddPackageData'); ?>">
                         <div class="content-area">
                             <div class="col-md-12">
                                 <div class="row">
@@ -174,31 +174,31 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> Profit (In %) </label>
-                                            <input type="number" name="profit" id="profit" class="form-control" required placeholder="Enter profit %">
+                                            <input type="number" name="profit" id="profit" class="form-control" step="any" required placeholder="Enter profit %">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> ROI (In %) </label>
-                                            <input type="number" name="roi" id="roi" class="form-control" required placeholder="Enter roi %">
+                                            <input type="number" name="roi" id="roi" class="form-control" step="any" required placeholder="Enter roi %">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> Sponsor Income (In %)</label>
-                                            <input type="number" name="sponsor_income" id="sponsor_income" class="form-control" required >
+                                            <input type="number" name="sponsor_income" id="sponsor_income" step="any" class="form-control" required placeholder="Enter sponsor income %">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> Matching (In %)</label>
-                                            <input type="number" name="matching" id="matching" class="form-control" required >
+                                            <input type="number" step="any" name="matching" id="matching" class="form-control" required placeholder="Enter matching %">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label> Capping</label>
-                                            <input type="number" name="capping" id="capping" class="form-control" required >
+                                            <input type="number" name="capping" id="capping" class="form-control" required placeholder="Enter capping">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -227,7 +227,7 @@
 </div>
 
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-sm" id="editPackages" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

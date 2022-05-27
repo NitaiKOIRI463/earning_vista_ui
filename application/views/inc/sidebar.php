@@ -28,7 +28,7 @@
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Admin/Master/FundGenerate'); ?>" key="t-products">Fund Generate</a></li>
                                     <li><a href="<?php echo base_url('Admin/Package'); ?>" key="t-products">Pakage</a></li>
-                                    <li><a href="javascript::void();" key="t-products">Global Setup</a></li>
+                                    <li><a href="<?php echo base_url('Admin/GlobalSetup'); ?>" key="t-products">Global Setup</a></li>
                                 </ul>
                             </li>
 
