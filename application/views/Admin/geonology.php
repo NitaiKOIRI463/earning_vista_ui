@@ -32,71 +32,87 @@
                                            
                                            <th style="text-align: center;" colspan="8">
                                             <div class="cron-member-shape"></div>
-                                            <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="start_node">Node Blank</p>
+                                            <p id="start_node">Node Blank</p>
+                                            <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;margin-top: -30px;">
+                                            <!-- <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="start_node">Node Blank</p> -->
                                            </th>
                                        </tr>
                                        <tr>
-                                           
-                                           <th  style="text-align: center;" colspan="4">
-                                               <div onclick="getData(this.id)" id="" class="member-shape l_1"></div>
-                                               <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="l_1">Node Blank</p>
+
+                                           <th  style="text-align: center;padding-right: 0px;" colspan="4">
+                                               <div onclick="getData(this.id)" class="member-shape l_1" data-toggle="tooltip" data-placement="top" title="Member Id : EV1001 Name : ABCD Sponser Id: EV3003 Amount : 2000 Registration Date: 12-05-2022"> </div>
+                                               <p id="l_1">Node Blank</p>
+                                               <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 53%;height: 16px;">
                                             </th>
                                            <th style="text-align: center;" colspan="4">
-                                                <div onclick="getData(this.id)" id="" class="member-shape r_1"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="r_1">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape r_1" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="r_1">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 53%;height: 16px;">
                                             </th>
                                            
                                        </tr>
                                        <tr>
                                            <th colspan="2">
-                                                <div onclick="getData(this.id)" id="" class="member-shape l_2_1"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="l_2_1">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape l_2_1" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="l_2_1">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 75%;height: 12px;">
                                             </th>
                                            <th colspan="2">
-                                                <div onclick="getData(this.id)" id="" class="member-shape l_2_2"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="l_2_2">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape l_2_2" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="l_2_2">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 75%;height: 12px;">
                                             </th>
                                            <th colspan="2">
-                                                <div onclick="getData(this.id)" id="" class="member-shape r_2_1"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="r_2_1">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape r_2_1" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="r_2_1">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 75%;height: 12px;">
                                             </th>
                                            <th colspan="2">
-                                                <div onclick="getData(this.id)" id="" class="member-shape r_2_2"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="r_2_2">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape r_2_2" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="r_2_2">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 75%;height: 12px;">
                                             </th>
                                        </tr>
                                        <tr>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_1"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="l_3_1">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_1" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="l_3_1">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_2"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="l_3_2">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_2" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="l_3_2">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_3"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="l_3_3">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_3" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="l_3_3">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_4"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="l_3_4">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape l_3_4" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="l_3_4">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_1"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="r_3_1">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_1" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="r_3_1">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_2"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="r_3_2">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_2" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="r_3_2">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_3"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="r_3_3">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_3" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="r_3_3">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                            <th>
-                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_4"></div>
-                                                <p style="width:50%;border-bottom:1px solid;margin: 0px auto;" id="r_3_4">Node Blank</p>
+                                                <div onclick="getData(this.id)" id="" class="member-shape r_3_4" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></div>
+                                                <p id="r_3_4">Node Blank</p>
+                                                <img src="<?php echo base_url('assets/geonology.jpeg') ?>" alt="node_connection" style="width: 50%;">
                                             </th>
                                        </tr>
                             </table> 
@@ -277,3 +293,19 @@
         }})
     }
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+        })
+    });
+</script>
+ <script>
+    $(document).ready(function(){
+        $(".member-shape").mouseenter(function(){
+            var word = document.getElementById("lft_1").value;
+            $(this).attr('title', word);
+        });     
+    });
+  </script>

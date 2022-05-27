@@ -1,23 +1,3 @@
-<style type="text/css">
-    #leftTbalepage_paginate{
-        float: right;
-    }
-    #leftTbalepage_paginate{
-        float: right;
-    }
-    #leftTbalepage_previous{
-        margin: 5px;
-        cursor: pointer;
-    }
-    #leftTbalepage_next{
-        margin: 5px;
-        cursor: pointer;
-    }
-    .paginate_button {
-        padding: 0px 5px;
-    }
-</style>
-
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
@@ -44,65 +24,43 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row" style="padding-bottom: 20px;">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Member Id</label>
-                                        <input type="text" name="member_id" id="member_id" required placeholder="enter member id" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group" style="padding-top: 28px;">
-                                        <button class="btn btn-md btn-success" type="button" onclick="getteamBussiness();">Show</button>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="card-body pt-2" style="border: 1px solid gray;">
+
+                                <div class="row" style="padding-bottom: 20px;">
+                                    <div class="col-md-12">
+                                        <div class="form-group" style="text-align: center;">
+                                            <button type="button" class="btn btn-md btn-primary" >
+                                                <span>Member Id : <?php echo $this->session->userdata('user_id'); ?></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="efffect-details">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                               <table id="leftTbalepage" class="table table-responsive" style="border: 1px solid gray;text-align: center;">
+                                            <div class="col-md-12">
+                                               <table class="table table-responsive" style="border: 1px solid gray;text-align: center;">
                                                     <thead>
-                                                        <tr style="background-color: aliceblue;">
-                                                            <th colspan="4" style="padding: 5px;">
-                                                                <h4>Left Side</h4>
+                                                        <tr>
+                                                            <th colspan="6" style="background-color: burlywood;">
+                                                                <h5>Team Bussiness</h5>
                                                             </th>
                                                         </tr>
                                                         <tr>
-                                                            <th style="border: 1px solid gray;">Sl. No.</th>
+                                                            <th style="border: 1px solid gray;">Sl No</th>
                                                             <th style="border: 1px solid gray;">Member Id</th>
-                                                            <th style="border: 1px solid gray;">Side</th>
-                                                            <th style="border: 1px solid gray;">Bussiness</th>
+                                                            <th style="border: 1px solid gray;">Name</th>
+                                                            <th style="border: 1px solid gray;">Member Id</th>
+                                                            <th style="border: 1px solid gray;">Name</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="tableLeft">
+                                                    <tbody id="bussinessTable">
                                                         
                                                     </tbody>
                                                 </table>  
                                             </div>
-
-                                            <div class="col-md-6">
-                                               <table id="rightSide_table" class="table table-responsive" style="border: 1px solid gray;text-align: center;">
-                                                    <thead>
-                                                        <tr style="background-color: aliceblue;">
-                                                            <th colspan="4" style="padding: 5px;">
-                                                                <h4>Right Side</h4>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th style="border: 1px solid gray;">Sl. No.</th>
-                                                            <th style="border: 1px solid gray;">Member Id</th>
-                                                            <th style="border: 1px solid gray;">Side</th>
-                                                            <th style="border: 1px solid gray;">Bussiness</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tableRight">
-
-                                                    </tbody>
-                                                </table>  
-                                            </div>
-
                                         </div>
                                     </div>      
                                 </div>
@@ -118,64 +76,58 @@
 
 <script type="text/javascript">
     var ses_member_id = '<?php echo $this->session->userdata('user_id'); ?>';
-    getteamBussiness();
-    function getteamBussiness()
+    getTeam_bussiness();
+    function getTeam_bussiness()
     {
-        var memberId = $('#member_id').val();
-        member_id = memberId==''?ses_member_id:memberId;
-                
         $.ajax({
             url: '<?php echo base_url('Member/TeamBussiness/GetTeamBussinessList'); ?>',
             type: 'POST',
-            data: {member_id: member_id},
+            data: {member_id: ses_member_id},
             success:function(res)
             {
-                response = JSON.parse(res);
+                var response = JSON.parse(res);
                 console.log(response);
-                if(response.data.length > 0)
+                if(response.data.count_L_R.length > 0)
                 {
-                    let li = 1;
-                    let ri = 1;
-                    $('#tableLeft').html('');
-                    $('#tableRight').html('');
-                    $.each(response.data,function(i,v){
-                        if(v.side == 'L')
-                        {
-                            $('#tableLeft').append('<tr>'+
-                                        '<td style="border: 1px solid gray;">'+(li++)+'</td>'+
-                                        '<td style="border: 1px solid gray;">'+v.member_id+'</td>'+
-                                        '<td style="border: 1px solid gray;">'+v.side+'</td>'+
-                                        '<td style="border: 1px solid gray;">0</td>'+
-                                        '</tr>');        
-                        }
-                        else if(v.side == 'R')
-                        {
-                            $('#tableRight').append('<tr>'+
-                                        '<td style="border: 1px solid gray;">'+(ri++)+'</td>'+
-                                        '<td style="border: 1px solid gray;">'+v.member_id+'</td>'+
-                                        '<td style="border: 1px solid gray;">'+v.side+'</td>'+
-                                        '<td style="border: 1px solid gray;">0</td>'+
-                                    '</tr>');
-                        }
+                    var totalLeft = response.data.count_L_R[0]['total'];
+                    var totalRight = response.data.count_L_R[1]['total'];
+                    console.log(totalLeft);
+                    console.log(totalRight);
 
-                        
-                    });
+                    if(response.data.data.length > 0)
+                    {
+                        $.each(response.data.data,function(ind,val){
+                            if(val.side == "L" || val.side == "R") 
+                            {
+                                $('#bussinessTable').append('<tr>'+
+                                                '<td style="border: 1px solid gray;">'+(ind+1)+'</td>'+
+                                                '<td style="border: 1px solid gray;">'+val.member_id+'</td>'+
+                                                '<td style="border: 1px solid gray;">'+val.name+'</td>'+
+                                                '<td style="border: 1px solid gray;">'+val.member_id+'</td>'+
+                                                '<td style="border: 1px solid gray;">'+val.name+'</td>'+
+                                            '</tr>');
+                            }
+                            // if(val.side == "R")
+                            // {
+                            //     $('#bussinessTable').append('<tr>'+
+                            //                     // '<td style="border: 1px solid gray;">'+(ind+1)+'</td>'+
+                            //                     '<td style="border: 1px solid gray;">'+val.member_id+'</td>'+
+                            //                     '<td style="border: 1px solid gray;">'+val.name+'</td>'+
+                            //                     // '<td style="border: 1px solid gray;"></td>'+
+                            //                     // '<td style="border: 1px solid gray;"></td>'+
+                            //                 '</tr>');
+                            // }
+                        });
+                    }else{
+                        $('#bussinessTable').html('<tr colspan="5"><td style="text-align: center;"> No Record Found !!</td></tr>');        
+                    }
+
+                    
+                }else{
+                    $('#bussinessTable').html('<tr colspan="5"><td style="text-align: center;"> No Record Found !!</td></tr>');
                 }
-                else{
-                     $('#tableLeft').html('<tr colspan="4"><td style="text-align: center;"> No Record Found !!</td></tr>');
-                     $('#tableRight').html('<tr colspan="4"><td style="text-align: center;"> No Record Found !!</td></tr>');
-                }
+
             }
         });
     }
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#leftTbalepage').DataTable();
-    });
-
-    $(document).ready(function () {
-        $('#rightSide_table').DataTable();
-    });
 </script>

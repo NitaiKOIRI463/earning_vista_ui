@@ -20,6 +20,7 @@
 			$data = 'parent_id='.$this->input->post('member_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
+			
 			echo json_encode($result);
 		}	
 	}
