@@ -16,7 +16,9 @@
 			$result = $this->CallAPI($api, $data, $method);
 			// echo "<pre>";
 			// print_r($result);die;
+			$d['packages'] = $result['data']['packages'][0];
 			if(empty($result['data']['total_roi'])){$d['R'] =  0;}else{$d['R'] =  $result['data']['total_roi'];};
+			if(empty($result['data']['total_direct'])){$d['total_direct'] =  0;}else{$d['total_direct'] =  $result['data']['total_direct'];};
 			if(empty($result['data']['total_income'])){$d['I'] =  0;}else{$d['I'] =  $result['data']['total_income'];};
 			if(empty($result['data']['total_matching'])){$d['M'] =  0;}else{$d['M'] =  $result['data']['total_matching'];};
 			if(empty($result['data']['total_withdrawal'])){$d['W'] =  0;}else{$d['W'] =  $result['data']['total_withdrawal'];};

@@ -57,7 +57,7 @@
                                             <div class="col-4">
                                                 <div>
                                                     <h5 class="mb-0">Plan</h5>
-                                                    <p class="text-muted text-truncate mb-2">Profit Wala Plan</p>
+                                                    <p class="text-muted text-truncate mb-2"><?php if(isset($packages['package_id'])){echo $packages['package_id'];}else{echo 'No Plan';}; ?></p>
                                                     
                                                 </div>
                                             </div>
@@ -137,7 +137,7 @@
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
                                             <p class="text-muted fw-medium">Total Group Income</p>
-                                            <h4 class="mb-0">16.2 <span>$</span></h4>
+                                            <h4 class="mb-0">0 <span>$</span></h4>
                                         </div>
 
                                         <div class="flex-shrink-0 align-self-center">
@@ -178,7 +178,7 @@
                                         <div class="flex-grow-1">
                                             <p class="text-muted fw-medium">Direct Referal</p>
 
-                                            <h4 class="mb-0">16.2 <span>$</span></h4>
+                                            <h4 class="mb-0"><?php echo $total_direct; ?> <span>$</span></h4>
                                         </div>
 
                                         <div class="flex-shrink-0 align-self-center">

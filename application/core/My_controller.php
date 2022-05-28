@@ -4,11 +4,12 @@ class MY_Controller extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    // if ($page = $this->uri->segment(1) != "LoginPage") {
-    //   if (!isset($_SESSION['id'])) {
-    //     redirect("LoginPage");
-    //   }
-    // }
+    // echo $this->uri->segment(2);die;
+    if (($page = $this->uri->segment(2) != "MemberLogin") && ($page = $this->uri->segment(2) != "AdminLogin")) {
+      if (!isset($_SESSION['user_id'])) {
+        redirect("Member/MemberLogin");
+      }
+    }
   }
   public function CallAPI($api, $data, $method) {
     $curl = curl_init();

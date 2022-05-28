@@ -14,8 +14,7 @@
 			$data = '';
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
-			// echo "<pre>";
-			// print_r($result);die;
+			
 			$d['total_left'] = $result['data']['Left'][0]['Total_Left'];
          	$d['total_right'] = $result['data']['Right'][0]['Total_Right'];
          	$d['total_sum'] = $result['data']['Sum'][0]['Total'];
@@ -33,6 +32,7 @@
 			$data = '';
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
+			// print_r($result);die;
 			$d['left_activ'] = $result['data']['Left_Activ'][0]['Total'];
          	$d['right_activ'] = $result['data']['Right_Activ'][0]['Total'];
          	$d['total_activ'] = $result['data']['Total_Activ'][0]['Total'];

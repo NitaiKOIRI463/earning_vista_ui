@@ -117,7 +117,7 @@
                         </div>
 
                      </div>
-                     <a href="<?php echo base_url(''); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
+                     <a href="<?php echo base_url('Member/MemberRegister/MemberList'); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
                   </div>
                </div>
             </div>           
@@ -185,7 +185,7 @@
                            </div>
                         </div>
                      </div>
-                     <a href="<?php echo base_url(''); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
+                     <a href="<?php echo base_url('Member/TeamBussiness'); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
                   </div>
                </div>
             </div>           
@@ -252,7 +252,7 @@
                            </div>
                         </div>
                      </div>
-                     <a href="<?php echo base_url(''); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
+                     <a href="<?php echo base_url('Admin/Geonology'); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
                   </div>
                </div>
             </div>           
@@ -295,8 +295,11 @@
                                           border-right: 1px dashed #777;">
                               <p class="text-uppercase fw-medium text-muted mb-3" style="font-size:15px">Total Matching</p>
                               <div class="d-flex align-items-center mb-3" >
-                                 <!-- <h4 class="fs-4 flex-grow-1 mb-0"><span class="counter-value"
-                                    data-target="<?php echo $card_data['total_completed_projects']; ?>">0</span></h4> -->
+
+                                 <h4 style="text-align:center;" class="fs-4  mb-0">
+                                    <br>
+                                    <span class="counter-value"
+                                    data-target="0">0</span></h4>
                               </div>
                            </div>
                         </div>
@@ -320,7 +323,7 @@
                            </div>
                         </div>
                      </div>
-                     <a href="<?php echo base_url(''); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
+                     <a href="<?php echo base_url('Admin/Geonology'); ?>" class="btn btn-info waves-effect waves-light" style="float: right;"> View</a>
                   </div>
                </div>
             </div>           
