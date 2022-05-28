@@ -127,6 +127,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label> Transection Pin </label>
+                                        <input type="number" name="transection_pin" id="transection_pin" class="form-control" required placeholder="Enter transection pin">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding-top: 5px;">
+                                    <div class="form-group">
                                         <label> Fund </label>
                                         <input type="number" name="withdrawfund" id="withdrawfund" class="form-control" required placeholder="Enter withdrawal fund">
                                     </div>

@@ -93,7 +93,7 @@
     getRequest_lists();
     function getRequest_lists()
     {
-        debugger
+        // debugger
         var current_status = $("#current_status").val();
         $.ajax({
             url: '<?php echo base_url('Admin/WithdrawalRequest/RequestList'); ?>',
@@ -151,19 +151,21 @@
         var fund = details[1];
         var member_id = details[2];
 
-        swal({
-            title: "Are you sure?",
-            text: "You want to approve!",
-            icon: "warning",
+        swal("Enter Transection Pin",{
+            content: "input",
             buttons: true,
-            dangerMode: true,
+            // title: "Are you sure?",
+            // text: "You want to approve!",
+            // icon: "warning",
+            // buttons: true,
+            // dangerMode: true,
           })
-          .then((willDelete) =>{
-            if (willDelete) {
+          .then((value) =>{
+            if (value) {
               $.ajax({
                 type: 'POST',
                 url: '<?php echo base_url();?>Member/Withdrawal/approveRequest',
-                data:{member_id: member_id,fund: fund,withdraw_id: witdrawal_id},
+                data:{member_id: member_id,fund: fund,withdraw_id: witdrawal_id,transection_pin: value},
                 success:function(data)
                 {
                     console.log(data);
@@ -174,6 +176,13 @@
                     setTimeout(function(){
                            location.reload();
                       }, 1000);
+                  }else if(data ==400){
+                    swal("Transection pin not matched !!", {
+                    icon: "error",
+                    });
+                    setTimeout(function(){
+                           location.reload();
+                      }, 1000);    
                   }else{
                     swal("Something Went Wrong !!", {
                     icon: "error",
@@ -183,7 +192,6 @@
                       }, 1000);
                   }
                 }
-        
               });
             } 
         });

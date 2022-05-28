@@ -117,13 +117,13 @@
                                     <span key="t-tasks">My Earning</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="tasks-list.html" key="t-task-list">Earning Wallet</a></li>
-                                    <li><a href="tasks-kanban.html" key="t-kanban-board">Activation Wallet</a></li>
+                                    <li><a href="javascript: void(0);" key="t-task-list">Earning Wallet</a></li>
+                                    <li><a href="javascript: void(0);" key="t-kanban-board">Activation Wallet</a></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="#" class="waves-effect">
+                                <a href="javascript: void(0);" class="waves-effect">
                                     <i class="bx bx-home-circle"></i>
                                     <span key="t-dashboards">Top Up</span>
                                 </a>

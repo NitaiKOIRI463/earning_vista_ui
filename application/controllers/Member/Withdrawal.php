@@ -26,7 +26,7 @@
 			$data = 'member_id='.$this->input->post('member_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
-			$totalAmount = $result['data'];
+			$totalAmount = $result['data'][0]['total_fund'];
 			print_r($totalAmount);
 		}
 
@@ -34,10 +34,11 @@
 		{
 			$member_id = $this->session->userdata('user_id',true);
 			$api = 'Withdrawal/withdrawalRequest';
-			$data = 'member_id='.$member_id.'&fund='.$this->input->post('withdrawfund',true).'&c_by='.$this->session->userdata('user_id',true);
+			$data = 'member_id='.$member_id.'&fund='.$this->input->post('withdrawfund',true).'&transaction_pin='.$this->input->post('transection_pin',true).'&c_by='.$this->session->userdata('user_id',true);
 			$method = 'POST';
+
 			$result = $this->CallAPI($api, $data, $method);
-			// print_r($result);die;
+
 			if ($result['response_code']== 200) 
 			{
 				$this->session->set_flashdata('success', $result['msg']);
@@ -51,7 +52,7 @@
 		public function approveRequest()
 		{
 			$api = 'Withdrawal/approvedWithdrawalRequest';
-			$data = 'member_id='.$this->input->post('member_id',true).'&withdraw_id='.$this->input->post('withdraw_id',true).'&fund='.$this->input->post('fund',true).'&c_by='.$this->session->userdata('user_id',true).'&d_by='.$this->session->userdata('user_id',true);
+			$data = 'member_id='.$this->input->post('member_id',true).'&withdraw_id='.$this->input->post('withdraw_id',true).'&fund='.$this->input->post('fund',true).'&transaction_pin='.$this->input->post('transection_pin',true).'&c_by='.$this->session->userdata('user_id',true).'&d_by='.$this->session->userdata('user_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			print_r($result['response_code']);
@@ -64,6 +65,18 @@
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
 			print_r($result['response_code']);
-		}	
+		}
+
+		// public function verify_transection_pin()
+		// {
+		// 	$member_id = $this->session->userdata('user_id',true);
+		// 	$api = '';
+		// 	$data = 'member_id='.$member_id;
+		// 	$method = 'POST';
+		// 	$result = $this->CallAPI($api, $data, $method);
+
+		// 	$d['v'] = "Member/verifyTransection_pin";
+		// 	$this->load->view('templates',$d);
+		// }	
 	}
 ?>
