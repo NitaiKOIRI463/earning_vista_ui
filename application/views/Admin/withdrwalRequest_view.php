@@ -135,7 +135,11 @@
                 }
                 else
                 {
+<<<<<<< Updated upstream
                      $("#requestedList_withdrw").html('<tr><td colspan="5"> No Record Found !!</td></tr>')
+=======
+                    $("#requestedList_withdrw").html('<tr><td colspan="5" style="text-align:center;"> No Record Found !!</td></tr>')
+>>>>>>> Stashed changes
                 }
             }
         });

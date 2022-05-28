@@ -41,7 +41,6 @@
                                     <li><a href="<?php echo base_url('Member/MemberRegister/addMember'); ?>" key="t-user-grid">Registration</a></li>
                                     <li><a href="<?php echo base_url('Member/MemberRegister/MemberList'); ?>" key="t-user-grid">Member List</a></li>
                                     <li><a href="<?php echo base_url('Admin/ActivationRequest'); ?>" key="t-user-list">Activation</a></li>
-                                    <li><a href="<?php echo base_url('Admin/ActivationRequest/ActivatioTreeDetails'); ?>" key="t-user-list">Activation Tree Details</a></li>
                                     <li><a href="<?php echo base_url('Admin/Geonology'); ?>" key="t-profile">Geonology</a></li>
                                     <li><a href="<?php echo base_url('Member/TeamBussiness'); ?>" key="t-profile">Team Bussiness</a></li>
                                 </ul>
@@ -54,10 +53,10 @@
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Admin/WithdrawalRequest'); ?>" key="t-exchange">Withdrawal Request</a></li>
-                                    <li><a href="javascript: void(0);" key="t-wallet">Income Wallet</a></li>
-                                    <li><a href="javascript: void(0);" key="t-buy">Withdrawal Wallet</a></li>
-                                    <li><a href="javascript: void(0);" key="t-lending">Withdrawal Transfer</a></li>
-                                    <li><a href="javascript: void(0);" key="t-orders">Withdrawal History</a></li>
+                                    <!-- <li><a href="javascript: void(0);" key="t-wallet">Income Wallet</a></li> -->
+                                    <!-- <li><a href="javascript: void(0);" key="t-buy">Withdrawal Wallet</a></li> -->
+                                    <!-- <li><a href="javascript: void(0);" key="t-lending">Withdrawal Transfer</a></li> -->
+                                    <!-- <li><a href="javascript: void(0);" key="t-orders">Withdrawal History</a></li> -->
                                 </ul>
                             </li>
 
@@ -67,10 +66,10 @@
                                     <span key="t-tables">Analytics MIS</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);" key="t-basic-tables">Activation Effect History</a></li>
-                                    <li><a href="javascript: void(0);" key="t-data-tables">Deposite/Pakage History</a></li>
-                                    <li><a href="javascript: void(0);" key="t-responsive-table">Cash Out History</a></li>
-                                    <li><a href="javascript: void(0);" key="t-editable-table">Invest V/S Return</a></li>
+                                    <!-- <li><a href="javascript: void(0);" key="t-basic-tables">Activation Effect History</a></li> -->
+                                    <!-- <li><a href="javascript: void(0);" key="t-data-tables">Deposite/Pakage History</a></li> -->
+                                    <!-- <li><a href="javascript: void(0);" key="t-responsive-table">Cash Out History</a></li> -->
+                                    <!-- <li><a href="javascript: void(0);" key="t-editable-table">Invest V/S Return</a></li> -->
                                 </ul>
                             </li>
                         </ul>
@@ -117,7 +116,7 @@
                                     <span key="t-tasks">My Earning</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="javascript: void(0);" key="t-task-list">Earning Wallet</a></li>
+                                    <li><a href="<?php echo base_url('Member/DailyIncomeLadger'); ?>" key="t-task-list">Earning Wallet</a></li>
                                     <li><a href="javascript: void(0);" key="t-kanban-board">Activation Wallet</a></li>
                                 </ul>
                             </li>

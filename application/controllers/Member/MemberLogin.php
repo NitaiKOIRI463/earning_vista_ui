@@ -19,7 +19,7 @@
 			$data = 'member_id='.$_POST['mbr_username'].'&password='.$_POST['mbr_password'];
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
-
+			
 			if ($result['response_code'] == 200) 
 			{
 				if (isset($result['data']['userData']['role_type']) == 2) 
