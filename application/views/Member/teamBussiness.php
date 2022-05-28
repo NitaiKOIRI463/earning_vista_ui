@@ -1,3 +1,23 @@
+<style type="text/css">
+    #leftTbalepage_paginate{
+        float: right;
+    }
+    #leftTbalepage_paginate{
+        float: right;
+    }
+    #leftTbalepage_previous{
+        margin: 5px;
+        cursor: pointer;
+    }
+    #leftTbalepage_next{
+        margin: 5px;
+        cursor: pointer;
+    }
+    .paginate_button {
+        padding: 0px 5px;
+    }
+</style>
+
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
@@ -24,23 +44,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-<<<<<<< Updated upstream
-                            
                             <div class="card-body pt-2" style="border: 1px solid gray;">
-
-                                <div class="row" style="padding-bottom: 20px;">
-                                    <div class="col-md-12">
-                                        <div class="form-group" style="text-align: center;">
-                                            <button type="button" class="btn btn-md btn-primary" >
-                                                <span>Member Id : <?php echo $this->session->userdata('user_id'); ?></span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-=======
-                            <div class="card-body pt-2" style="border: 1px solid gray;">
->>>>>>> Stashed changes
                                 <div class="efffect-details">
                                     <div class="col-md-12">
                                         <div class="row">
@@ -48,18 +52,6 @@
                                                <table class="table table-responsive" style="border: 1px solid gray;text-align: center;">
                                                     <thead>
                                                         <tr>
-<<<<<<< Updated upstream
-                                                            <th colspan="6" style="background-color: burlywood;">
-                                                                <h5>Team Bussiness</h5>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th style="border: 1px solid gray;">Sl No</th>
-                                                            <th style="border: 1px solid gray;">Member Id</th>
-                                                            <th style="border: 1px solid gray;">Name</th>
-                                                            <th style="border: 1px solid gray;">Member Id</th>
-                                                            <th style="border: 1px solid gray;">Name</th>
-=======
                                                             <th colspan="7">
                                                                 <input type="text" class="form-control" id="member_id" name="member_id">
                                                             </th>
@@ -77,7 +69,6 @@
                                                             <th colspan="4">Right <span id="right-span" class="btn btn-sm btn-info">0</span>
                                                             <span id="right-span-business" class="btn btn-sm btn-success">0</span>
                                                             </th>
->>>>>>> Stashed changes
                                                         </tr>
                                                        <tr>
                                                            <th>Member ID</th>
@@ -91,15 +82,12 @@
                                                            
                                                        </tr>
                                                     </thead>
-<<<<<<< Updated upstream
-                                                    <tbody id="bussinessTable">
-=======
                                                     <tbody id="tableData">
->>>>>>> Stashed changes
                                                         
                                                     </tbody>
                                                 </table>  
                                             </div>
+
                                         </div>
                                     </div>      
                                 </div>
@@ -115,11 +103,6 @@
 
 <script type="text/javascript">
     var ses_member_id = '<?php echo $this->session->userdata('user_id'); ?>';
-<<<<<<< Updated upstream
-    getTeam_bussiness();
-    function getTeam_bussiness()
-    {
-=======
     var role_type = '<?php echo $this->session->userdata('role_type'); ?>';
     getteamBussiness();
     function getteamBussiness()
@@ -127,57 +110,12 @@
         var member_id = $('#member_id').val();
         member_id = member_id==''?ses_member_id:member_id;
                 
->>>>>>> Stashed changes
         $.ajax({
             url: '<?php echo base_url('Member/TeamBussiness/GetTeamBussinessList'); ?>',
             type: 'POST',
-            data: {member_id: ses_member_id},
+            data: {member_id: member_id},
             success:function(res)
             {
-<<<<<<< Updated upstream
-                var response = JSON.parse(res);
-                console.log(response);
-                if(response.data.count_L_R.length > 0)
-                {
-                    var totalLeft = response.data.count_L_R[0]['total'];
-                    var totalRight = response.data.count_L_R[1]['total'];
-                    console.log(totalLeft);
-                    console.log(totalRight);
-
-                    if(response.data.data.length > 0)
-                    {
-                        $.each(response.data.data,function(ind,val){
-                            if(val.side == "L" || val.side == "R") 
-                            {
-                                $('#bussinessTable').append('<tr>'+
-                                                '<td style="border: 1px solid gray;">'+(ind+1)+'</td>'+
-                                                '<td style="border: 1px solid gray;">'+val.member_id+'</td>'+
-                                                '<td style="border: 1px solid gray;">'+val.name+'</td>'+
-                                                '<td style="border: 1px solid gray;">'+val.member_id+'</td>'+
-                                                '<td style="border: 1px solid gray;">'+val.name+'</td>'+
-                                            '</tr>');
-                            }
-                            // if(val.side == "R")
-                            // {
-                            //     $('#bussinessTable').append('<tr>'+
-                            //                     // '<td style="border: 1px solid gray;">'+(ind+1)+'</td>'+
-                            //                     '<td style="border: 1px solid gray;">'+val.member_id+'</td>'+
-                            //                     '<td style="border: 1px solid gray;">'+val.name+'</td>'+
-                            //                     // '<td style="border: 1px solid gray;"></td>'+
-                            //                     // '<td style="border: 1px solid gray;"></td>'+
-                            //                 '</tr>');
-                            // }
-                        });
-                    }else{
-                        $('#bussinessTable').html('<tr colspan="5"><td style="text-align: center;"> No Record Found !!</td></tr>');        
-                    }
-
-                    
-                }else{
-                    $('#bussinessTable').html('<tr colspan="5"><td style="text-align: center;"> No Record Found !!</td></tr>');
-                }
-
-=======
                 response = JSON.parse(res);
                 // console.log();
                 let left = response.data.left.length;
@@ -264,7 +202,6 @@
                 
                 
                 
->>>>>>> Stashed changes
             }
         });
     }

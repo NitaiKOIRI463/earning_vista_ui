@@ -135,7 +135,7 @@
                 }
                 else
                 {
-                     $("#requestedList_withdrw").append('<tr><td> No Record Found !!</td></tr>')
+                     $("#requestedList_withdrw").html('<tr><td colspan="5"> No Record Found !!</td></tr>')
                 }
             }
         });
@@ -168,7 +168,7 @@
                 data:{member_id: member_id,fund: fund,withdraw_id: witdrawal_id,transection_pin: value},
                 success:function(data)
                 {
-                    console.log(data);
+                    // console.log(data);
                   if(data=='200'){
                       swal("Successfully Approved!!", {
                       icon: "success",

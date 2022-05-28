@@ -57,6 +57,7 @@
                                             <th>Return Amount</th>
                                             <th>Remaining Amount</th>
                                             <th>Status</th>
+                                            <th>Remarks</th>
                                             <th>Days</th>
                                             <th>Activation Date</th>
                                             <th>Expiry Date</th>
@@ -95,11 +96,12 @@
                                                         }else if($list['current_status'] == 'reject')
                                                         {
                                                             ?>
-                                                                 <span class="badge badge-pill badge-soft-success font-size-11">Reject</span>
+                                                                 <span class="badge badge-pill badge-soft-danger font-size-11">Reject</span>
                                                             <?php
                                                         }
                                                         ?>
                                                     </td>
+                                                    <td><?php echo $list['remarks']; ?></td>
                                                     <td><?php echo $list['days']; ?></td>
                                                     <td><?php echo $list['activation_date']; ?></td>
                                                     <td><?php echo $list['expiry_date']; ?></td>

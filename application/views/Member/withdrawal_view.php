@@ -182,7 +182,7 @@
             success:function(res)
             {
                 // console.log(res);
-                $("#user_total_fund").html(res,);
+                $("#user_total_fund").html(res);
             }
         });
     }

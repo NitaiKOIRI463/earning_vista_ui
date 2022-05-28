@@ -55,14 +55,6 @@
 			$data = 'parent_id='.$this->input->post('member_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
-<<<<<<< Updated upstream
-			
-=======
-			// $lrData = $this->getTotalLeftRight($result['data']);
-			// $rsData['left'] = $lrData['left'];
-			// $rsData['right'] = $lrData['right'];
-			// $rsData['result'] = $result;
->>>>>>> Stashed changes
 			echo json_encode($result);
 		}	
 	}

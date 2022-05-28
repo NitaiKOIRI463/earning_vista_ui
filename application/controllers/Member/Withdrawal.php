@@ -15,6 +15,7 @@
 			$data = 'member_id='.$member_id;
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
+
 			$d['reqList'] = $result['data'];
 			$d['v'] = "Member/withdrawal_view";
 			$this->load->view('templates',$d);
@@ -26,7 +27,8 @@
 			$data = 'member_id='.$this->input->post('member_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
-			$totalAmount = $result['data'][0]['total_fund'];
+			// print_r($result);die;
+			$totalAmount = $result['data'];
 			print_r($totalAmount);
 		}
 
@@ -38,7 +40,7 @@
 			$method = 'POST';
 
 			$result = $this->CallAPI($api, $data, $method);
-
+			// print_r($result);die;
 			if ($result['response_code']== 200) 
 			{
 				$this->session->set_flashdata('success', $result['msg']);
@@ -55,6 +57,7 @@
 			$data = 'member_id='.$this->input->post('member_id',true).'&withdraw_id='.$this->input->post('withdraw_id',true).'&fund='.$this->input->post('fund',true).'&transaction_pin='.$this->input->post('transection_pin',true).'&c_by='.$this->session->userdata('user_id',true).'&d_by='.$this->session->userdata('user_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
+			// print_r($result);die;
 			print_r($result['response_code']);
 		}
 

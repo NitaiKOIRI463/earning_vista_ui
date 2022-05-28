@@ -63,6 +63,7 @@
                                             <th>Hash Id</th>
                                             <th>Review Date</th>
                                             <th>Current Status</th>
+                                            <th>Remarks</th>
                                             <th style="text-align:center;" colspan="2">Action</button></th>
                                             
                                        </tr>
@@ -86,15 +87,12 @@
 <div id="myModal2" class="modal">
  <span style="color:white!important;" onclick="closeRejectBox()" class="close">X</span>
  <div class="modal-content" class="card card-body">
-    <form  method="post" action="wallet_refill_request.php">
+    <form  method="post" action="<?php echo base_url(); ?>Admin/ActivationRequest/reject_package_data">
        <div  class="row">
           <div class="col-md-11">
              <strong style="margin:10px;">Remarks</strong>
-             <input type="hidden" id="member_id" name="member_id">
              <input type="hidden" id="update_id" name="update_id">
              <textarea id="reject_remarks" style="margin:10px;" name="reject_remarks" class="form-control"></textarea>
-             <strong style="margin:10px;">Email Remarks</strong>
-             <textarea id="reject_mail_remarks" style="margin:10px;" name="reject_mail_remarks"  class="form-control"></textarea>
           </div>
           <div style="padding: 10px;text-align: center;" class="col-md-12">
              <button type="submit" name="cancelSubmit" class="btn btn-md btn-danger">Confirm</button>
@@ -334,8 +332,9 @@
                             '<td>'+v.transaction_no.substr(0,50)+'.. <i class="bx bx-copy" id="copy_'+i+'" onclick="copyNow('+i+')" style="cursor: pointer;"></i></td>'+
                             '<td>'+activation_date+'</td>'+
                             '<td>'+v.current_status+'</td>'+
+                            '<td>'+v.remarks+'</td>'+
                             '<td><button class="btn btn-sm btn-success" onclick="sumbitForm('+v.id+')">Activate</button></td>'+
-                            '<td><button onclick="openRejectBox(\''+v.member_id+'\','+v.id+')" class="btn btn-sm btn-danger">Reject</button></td>'+
+                            '<td><button onclick="openRejectBox('+v.id+')" class="btn btn-sm btn-danger">Reject</button></td>'+
                             '</tr>');
                     });
                 }else
@@ -374,18 +373,16 @@
    // Get the <span> element that closes the modal
    var span = document.getElementsByClassName("close")[0];
    var span2 = document.getElementsByClassName("close")[1];
-    function openRejectBox(member_id,id)
+    function openRejectBox(id)
    {
-      document.getElementById('member_id').value = member_id;
+      
       document.getElementById('update_id').value = id;
-      console.log(member_id+''+id);
       modal2.style.display = "block";
    }
 
    function closeRejectBox()
    {
       document.getElementById('reject_remarks').value = '';
-      document.getElementById('member_id').value = '';
       document.getElementById('update_id').value = '';
       modal2.style.display = "none";
    }
@@ -484,8 +481,8 @@
                             $('#roi_data').append('<tr><td colspan="6">No Record Found</td></tr>');
                         }
                         
-
-                        if(res.data.matching_income.length)
+                        console.log(res.data.matching_income);
+                        if(res.data.matching_income.length>0)
                         {   
                             $('#matching_data').html('');
                             $.each(res.data.matching_income,function(i,v){

@@ -69,6 +69,23 @@
 			$result = $this->CallAPI($api, $data, $method);
 			echo json_encode($result,true);
 		}
+
+		public function reject_package_data()
+		{
+			$api = 'Package/reject_package_request';
+			$data = 'req_id='.$this->input->post('update_id',true).'&c_by='.$this->session->userdata('user_id').'&reject_remarks='.$this->input->post('reject_remarks',true);
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			if($result['response_code']== 200) 
+			{
+				$this->session->set_flashdata('success', $result['msg']);
+                redirect('Admin/ActivationRequest');
+			}else{
+				$this->session->set_flashdata('error', $result['msg']);
+                redirect('Admin/ActivationRequest');
+			}
+			
+		}
 		
 
 	}

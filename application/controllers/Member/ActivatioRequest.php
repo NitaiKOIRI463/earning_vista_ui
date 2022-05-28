@@ -35,6 +35,34 @@
 			$this->load->view('templates',$d);
 		}
 
+
+		public function reject()
+		{
+
+			$api = 'Plan/getPlanList';
+			$data = '';
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			$d['package_list'] = $result['data'];
+
+			$api = 'Package/get_reject_packages';
+			$data = 'member_id='.$this->session->userdata('user_id');
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			// print_r($result);die;
+			$d['prevData'] = $result['data'];
+			
+			$api = 'Package/get_bitcoin_address';
+			$data = '';
+			$method = 'POST';
+			$result = $this->CallAPI($api, $data, $method);
+			$d['bitcoin_address'] = $result['data'];
+
+
+			$d['v'] = "Member/reject_activation";
+			$this->load->view('templates',$d);
+		}
+
 		public function purchasePackage()
 		{
 			$api = 'Package/BuyPackage';
