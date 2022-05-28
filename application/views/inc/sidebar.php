@@ -96,9 +96,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Member/MemberRegister/addMember'); ?>" key="t-products">Register</a></li>
-                                    <li><a href="<?php echo base_url('Member/ActivatioRequest'); ?>" key="t-products">Activation Request</a></li>
-                                    <li><a href="<?php echo base_url('Admin/Geonology'); ?>" key="t-products">Genology</a></li>
-                                    <li><a href="<?php echo base_url('Member/TeamBussiness'); ?>" key="t-products">Team Bussiness </a></li>
+                                    
                                 </ul>
                             </li>
 
@@ -108,8 +106,8 @@
                                     <span key="t-projects">Opportunity</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                    <li><a href="<?php echo base_url('Member/Pakages'); ?>" key="t-p-grid">My Opportunity</a></li>
-                                    <li><a href="javascript::void();" key="t-p-list">Buy Opportunity</a></li>
+                                    <li><a href="<?php echo base_url('Member/Pakages'); ?>" key="t-p-grid">My Packages</a></li>
+                                    <li><a href="<?php echo base_url('Member/ActivatioRequest'); ?>" key="t-p-list">Buy Packages</a></li>
                                 </ul>
                             </li>
 
@@ -131,15 +129,15 @@
                                 </a>
                             </li>
 
-                            <li class="">
+                            <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
                                     <i class="bx bx-file"></i>
                                     <span key="t-utility">My Bussiness</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
-                                    <li><a href="#" key="t-starter-page">Direct Refrral</a></li>
-                                    <li><a href="#" key="t-maintenance">Group Bussiness</a></li>
-                                    <li><a href="#" key="t-coming-soon">Geonology</a></li>
+                                    <li><a href="<?php echo base_url('Member/TeamBussiness/direct_member'); ?>" key="t-products">Direct Refrral</a></li>
+                                    <li><a href="<?php echo base_url('Member/TeamBussiness'); ?>" key="t-products">Team Bussiness </a></li>
+                                    <li><a href="<?php echo base_url('Admin/Geonology'); ?>" key="t-products">Genology</a></li>
                                 </ul>
                             </li>
 
@@ -150,7 +148,6 @@
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false">
                                     <li><a href="<?php echo base_url('Member/Withdrawal'); ?>" key="t-wallet">Make Withdrawal</a></li>
-                                    <li><a href="#" key="t-buy">Withdrawal History</a></li>
                                 </ul>
                             </li>
 

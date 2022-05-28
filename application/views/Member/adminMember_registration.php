@@ -32,7 +32,19 @@
                                             <div class="col-lg-3">
                                                 <div class="form-group">
                                                     <strong>Sponsor Id</strong> <span id="sponsor-error"></span>
-                                                    <input type="text" class="form-control" name="sponsor_id" id="sponsor_id" placeholder="Sponsor id" required onblur="checkSponsorId(this.value);">
+                                                    <?php if($this->session->userdata('role_type')==2){
+                                                        ?>
+                                                        <input disabled="true" type="text" class="form-control" placeholder="Sponsor id" value="<?php echo $this->session->userdata('user_id'); ?>" required onblur="checkSponsorId(this.value);">
+                                                        <input type="hidden" class="form-control" name="sponsor_id" id="sponsor_id" placeholder="Sponsor id" value="<?php echo $this->session->userdata('user_id'); ?>" required >
+                                                        <?php 
+                                                    }else
+                                                    {   
+                                                        ?>
+                                                        <input type="text" class="form-control" name="sponsor_id" id="sponsor_id" placeholder="Sponsor id" required onblur="checkSponsorId(this.value);">
+                                                        <?php 
+
+                                                    }?>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-lg-3">
@@ -379,6 +391,11 @@
     let emailVerify = false;
     let phoneVerify = false;
     let sponsorVerify = false;
+    let role = '<?php echo $this->session->userdata('role_type'); ?>';
+    if(role==2)
+    {
+        sponsorVerify = true;
+    }
     // checkSubmit();
     function checkSubmit()
     {

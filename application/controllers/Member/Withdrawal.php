@@ -26,7 +26,7 @@
 			$data = 'member_id='.$this->input->post('member_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
-			$totalAmount = $result['data'][0]['total_fund'];
+			$totalAmount = $result['data'];
 			print_r($totalAmount);
 		}
 
@@ -37,6 +37,7 @@
 			$data = 'member_id='.$member_id.'&fund='.$this->input->post('withdrawfund',true).'&c_by='.$this->session->userdata('user_id',true);
 			$method = 'POST';
 			$result = $this->CallAPI($api, $data, $method);
+			// print_r($result);die;
 			if ($result['response_code']== 200) 
 			{
 				$this->session->set_flashdata('success', $result['msg']);

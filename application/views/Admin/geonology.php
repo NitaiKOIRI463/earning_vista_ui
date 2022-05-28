@@ -29,6 +29,12 @@
                         <div class="card-body">
                             <table class="table table-responsive" style="text-align: center;">
                                         <tr>
+                                            <th colspan="7">
+                                                <input type="text" class="form-control" name="member_id" id="member_id">
+                                            </th>
+                                            <th><button onclick="search()" type="button" class="btn btn-md btn-info">Search</button></th>
+                                        </tr>
+                                        <tr>
                                            
                                            <th style="text-align: center;" colspan="8">
                                             <div class="cron-member-shape"></div>
@@ -146,151 +152,477 @@
 
 </style>
 
+
 <script type="text/javascript">
     getData('<?php echo $this->session->userdata('user_id'); ?>');
+
+    function search()
+    {
+        getData($('#member_id').val());
+    }
     function getData(parent_id)
     {
-        $('#start_node').html(parent_id);
-        $.ajax({type:'POST',url:'<?php echo base_url(); ?>Admin/Geonology/getGenologyData',data:{parent_id: parent_id},success:function(res){
-            res = JSON.parse(res);
-            if(res.data.length>0)
-            {
-                let members = {};
-                let max_level = 0;
-                $.each(res.data,function(i,v){
-
-                    if(v.m_level==1)
-                    {
-                        if(v.side=='L')
-                        {
-                            $('.l_1').attr('id',v.member_id);
-                            $('#l_1').html(v.member_id+'<p>'+v.name+'</p>');
-                        }else if(v.side=='R')
-                        {
-                            $('.r_1').attr('id',v.member_id);
-                            $('#r_1').html(v.member_id+'<p>'+v.name+'</p>');
-                            
-                        }
-                    }else if(v.m_level==2)
-                    {
-                        if(v.side=='L' && v.p_side == 'L' && $('.l_1').attr('id')==v.parent_id)
-                        {
-                            $('.l_2_1').attr('id',v.member_id);
-                            $('#l_2_1').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='L' && v.p_side == 'R' && $('.l_1').attr('id')==v.parent_id)
-                        {
-                            $('.l_2_2').attr('id',v.member_id);
-                            $('#l_2_2').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='R' && v.p_side == 'L' && $('.r_1').attr('id')==v.parent_id)
-                        {
-                            $('.r_2_1').attr('id',v.member_id);
-                            $('#r_2_1').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='R' && v.p_side == 'R' && $('.r_1').attr('id')==v.parent_id)
-                        {
-                            $('.r_2_2').attr('id',v.member_id);
-                            $('#r_2_2').html(v.member_id+'<p>'+v.name+'</p>');
-                        }
-                    }else if(v.m_level==3)
-                    {
-                        if(v.side=='L' && v.p_side == 'L' && $('.l_2_1').attr('id')==v.parent_id)
-                        {
-                            $('.l_3_1').attr('id',v.member_id);
-                            $('#l_3_1').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='L' && v.p_side == 'R' && $('.l_2_1').attr('id')==v.parent_id)
-                        {
-                            $('.l_3_2').attr('id',v.member_id);
-                            $('#l_3_2').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='L' && v.p_side == 'L' && $('.l_2_2').attr('id')==v.parent_id)
-                        {
-                            $('.l_3_3').attr('id',v.member_id);
-                            $('#l_3_3').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='L' && v.p_side == 'R' && $('.l_2_2').attr('id')==v.parent_id)
-                        {
-                            $('.l_3_4').attr('id',v.member_id);
-                            $('#l_3_4').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='R' && v.p_side == 'L' && $('.r_2_1').attr('id')==v.parent_id)
-                        {
-                            $('.r_3_1').attr('id',v.member_id);
-                            $('#r_3_1').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='R' && v.p_side == 'R' && $('.r_2_1').attr('id')==v.parent_id)
-                        {
-                            $('.r_3_2').attr('id',v.member_id);
-                            $('#r_3_2').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='R' && v.p_side == 'L' && $('.r_2_2').attr('id')==v.parent_id)
-                        {
-                            $('.r_3_3').attr('id',v.member_id);
-                            $('#r_3_3').html(v.member_id+'<p>'+v.name+'</p>');
-                        }if(v.side=='R' && v.p_side == 'R' && $('.r_2_2').attr('id')==v.parent_id)
-                        {
-                            $('.r_3_4').attr('id',v.member_id);
-                            $('#r_3_4').html(v.member_id+'<p>'+v.name+'</p>');
-                        }
-                    }
-                    max_level = v.m_level;
-                });
-                if(max_level==1)
+        if(parent_id!='')
+        {
+            $('#member_id').val(parent_id);
+            $('#start_node').html(parent_id);
+            $.ajax({type:'POST',url:'<?php echo base_url(); ?>Admin/Geonology/getGenologyData',data:{parent_id: parent_id},success:function(res){
+                res = JSON.parse(res);
+                console.log(res.data)
+                $title = '';
+                $title += 'Left Business : '+res.data.left_business;
+                $title += '\nRight Business : '+res.data.right_business;
+                $title += '\nLeft Team : '+res.data.left_team;
+                $title += '\nRight Team : '+res.data.right_team;
+                $('.cron-member-shape').attr('title',$title);
+                if(res.data.data.length>0)
                 {
+                    let members = {};
+                    let max_level = 0;
+                    $.each(res.data.data,function(i,v){
+
+                        if(v.m_level==1)
+                        {
+                            if(v.side=='L')
+                            {
+                                $('.l_1').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.l_1').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.l_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.l_1').attr('title',$title);
+                                
+                                $('#l_1').html(v.member_id+'<p>'+v.name+'</p>');
+                            }else if(v.side=='R')
+                            {
+                                $('.r_1').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.r_1').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.r_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.r_1').attr('title',$title);
+                                $('#r_1').html(v.member_id+'<p>'+v.name+'</p>');
+                                
+                            }
+                        }else if(v.m_level==2)
+                        {
+                            if(v.side=='L' && v.p_side == 'L' && $('.l_1').attr('id')==v.parent_id)
+                            {
+                                $('.l_2_1').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.l_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.l_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.l_2_1').attr('title',$title);
+
+                                $('#l_2_1').html(v.member_id+'<p>'+v.name+'</p>');
+                            }
+                            if(v.side=='L' && v.p_side == 'R' && $('.l_1').attr('id')==v.parent_id)
+                            {
+
+                                $('.l_2_2').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.l_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.l_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.l_2_2').attr('title',$title);
+                                $('#l_2_2').html(v.member_id+'<p>'+v.name+'</p>');
+
+                            }
+                            if(v.side=='R' && v.p_side == 'L' && $('.r_1').attr('id')==v.parent_id)
+                            {
+                                $('.r_2_1').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.r_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.r_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.r_2_1').attr('title',$title);
+                                $('#r_2_1').html(v.member_id+'<p>'+v.name+'</p>');
+                            }
+                            if(v.side=='R' && v.p_side == 'R' && $('.r_1').attr('id')==v.parent_id)
+                            {
+                                $('.r_2_2').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.r_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.r_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.r_2_2').attr('title',$title);
+                                $('#r_2_2').html(v.member_id+'<p>'+v.name+'</p>');
+                            }
+                        }else if(v.m_level==3)
+                        {
+                            if(v.side=='L' && v.p_side == 'L' && $('.l_2_1').attr('id')==v.parent_id)
+                            {
+                                $('.l_3_1').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.l_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.l_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.l_3_1').attr('title',$title);
+                                $('#l_3_1').html(v.member_id+'<p>'+v.name+'</p>');
+                            }if(v.side=='L' && v.p_side == 'R' && $('.l_2_1').attr('id')==v.parent_id)
+                            {
+                                $('.l_3_2').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.l_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.l_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.l_3_2').attr('title',$title);
+                                $('#l_3_2').html(v.member_id+'<p>'+v.name+'</p>');
+                            }if(v.side=='L' && v.p_side == 'L' && $('.l_2_2').attr('id')==v.parent_id)
+                            {
+                                $('.l_3_3').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.l_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.l_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.l_3_3').attr('title',$title);
+                                $('#l_3_3').html(v.member_id+'<p>'+v.name+'</p>');
+                            }if(v.side=='L' && v.p_side == 'R' && $('.l_2_2').attr('id')==v.parent_id)
+                            {
+                                $('.l_3_4').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.l_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.l_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.l_3_4').attr('title',$title);
+                                $('#l_3_4').html(v.member_id+'<p>'+v.name+'</p>');
+                            }if(v.side=='R' && v.p_side == 'L' && $('.r_2_1').attr('id')==v.parent_id)
+                            {
+                                $('.r_3_1').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.r_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.r_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.r_3_1').attr('title',$title);
+                                $('#r_3_1').html(v.member_id+'<p>'+v.name+'</p>');
+                            }if(v.side=='R' && v.p_side == 'R' && $('.r_2_1').attr('id')==v.parent_id)
+                            {
+                                $('.r_3_2').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.r_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.r_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.r_3_2').attr('title',$title);
+                                $('#r_3_2').html(v.member_id+'<p>'+v.name+'</p>');
+                            }if(v.side=='R' && v.p_side == 'L' && $('.r_2_2').attr('id')==v.parent_id)
+                            {
+                                $('.r_3_3').attr('id',v.member_id);
+                                $('.r_3_3').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+                                
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.r_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.r_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+
+                                $('.r_3_3').attr('title',$title);
+                                $('#r_3_3').html(v.member_id+'<p>'+v.name+'</p>');
+                            }if(v.side=='R' && v.p_side == 'R' && $('.r_2_2').attr('id')==v.parent_id)
+                            {
+                                $('.r_3_4').attr('id',v.member_id);
+                                $('.r_3_3').attr('id',v.member_id);
+                                $title = '';
+                                $title += 'Left Business : '+v.left_business;
+                                $title += '\nRight Business : '+v.right_business;
+                                $title += '\nLeft Team : '+v.left_team;
+                                $title += '\nRight Team : '+v.right_team;
+
+                                if(v.activation_status==1)
+                                {
+                                    $title += '\nActive Status : Active';
+                                    $('.r_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user-active.jpg')");
+                                }else
+                                {
+                                    $('.r_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                                    $title += '\nActive Status : Inactive';
+                                }
+                                $('.r_3_4').attr('title',$title);
+                                $('#r_3_4').html(v.member_id+'<p>'+v.name+'</p>');
+                            }
+                        }
+                        max_level = v.m_level;
+                    });
+                    
+                    if(max_level==1)
+                    {
+                        $('.l_2_1').attr('id','NA');
+                        $('.l_2_1').attr('title','NA');
+                        $('#l_2_1').html('');
+                        $('.l_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.l_2_2').attr('id','NA');
+                        $('.l_2_2').attr('title','NA');
+                        $('#l_2_2').html('');
+                        $('.l_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.r_2_1').attr('id','NA');
+                        $('.r_2_1').attr('title','NA');
+                        $('#r_2_1').html('');
+                        $('.r_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.r_2_2').attr('id','NA');
+                        $('.r_2_2').attr('title','NA');
+                        $('#r_2_2').html('');
+                        $('.r_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                        
+                    }else if(max_level==2)
+                    {
+                        $('.l_3_1').attr('id','NA');
+                        $('.l_3_1').attr('title','NA');
+                        $('#l_3_1').html('');
+                        $('.l_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.l_3_2').attr('id','NA');
+                        $('.l_3_2').attr('title','NA');
+                        $('#l_3_2').html('');
+                        $('.l_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.l_3_3').attr('id','NA');
+                        $('.l_3_3').attr('title','NA');
+                        $('#l_3_3').html('');
+                        $('.l_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.l_3_4').attr('id','NA');
+                        $('.l_3_4').attr('title','NA');
+                        $('#l_3_4').html('');
+                        $('.l_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.r_3_1').attr('id','NA');
+                        $('.r_3_1').attr('title','NA');
+                        $('#r_3_1').html('');
+                        $('.r_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.r_3_2').attr('id','NA');
+                        $('.r_3_2').attr('title','NA');
+                        $('#r_3_2').html('');
+                        $('.r_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.r_3_3').attr('id','NA');
+                        $('.r_3_3').attr('title','NA');
+                        $('#r_3_3').html('');
+                        $('.r_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                        $('.r_3_4').attr('id','NA');
+                        $('.r_3_4').attr('title','NA');
+                        $('#r_3_4').html('');
+                        $('.r_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                    }
+                }else
+                {
+                    $('#l_1').html('NA');
+                    $('.l_1').attr('id','');
+                    $('.l_1').attr('title','NA');
+                    $('.l_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
+                    $('#r_1').html('NA');
+                    $('.r_1').attr('id','');
+                    $('.r_1').attr('title','NA');
+                    $('.r_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.l_2_1').attr('id','NA');
                     $('#l_2_1').html('');
+                    $('.l_2_1').attr('title','NA');
+                    $('.l_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                    
                     $('.l_2_2').attr('id','NA');
                     $('#l_2_2').html('');
+                    $('.l_2_2').attr('title','NA');
+                    $('.l_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.r_2_1').attr('id','NA');
                     $('#r_2_1').html('');
+                    $('.r_2_1').attr('title','NA');
+                    $('.r_2_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.r_2_2').attr('id','NA');
                     $('#r_2_2').html('');
-                    
-                }else if(max_level==2)
-                {
+                    $('.r_2_2').attr('title','NA');
+                    $('.r_2_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.l_3_1').attr('id','NA');
                     $('#l_3_1').html('');
+                    $('.l_3_1').attr('title','NA');
+                    $('.l_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.l_3_2').attr('id','NA');
                     $('#l_3_2').html('');
+                    $('.l_3_2').attr('title','NA');
+                    $('.l_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.l_3_3').attr('id','NA');
                     $('#l_3_3').html('');
+                    $('.l_3_3').attr('title','NA');
+                    $('.l_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.l_3_4').attr('id','NA');
                     $('#l_3_4').html('');
+                    $('.l_3_4').attr('title','NA');
+                    $('.l_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.r_3_1').attr('id','NA');
                     $('#r_3_1').html('');
+                    $('.r_3_1').attr('title','NA');
+                    $('.r_3_1').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.r_3_2').attr('id','NA');
                     $('#r_3_2').html('');
+                    $('.r_3_2').attr('title','NA');
+                    $('.r_3_2').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.r_3_3').attr('id','NA');
                     $('#r_3_3').html('');
+                    $('.r_3_3').attr('title','NA');
+                    $('.r_3_3').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+
                     $('.r_3_4').attr('id','NA');
                     $('#r_3_4').html('');
+                    $('.r_3_4').attr('title','NA');
+                    $('.r_3_4').css('background-image',"url('<?php echo base_url(); ?>assets/user.jpg')");
+                    
                 }
-            }else
-            {
-                $('#l_1').html('NA');
-                $('.l_1').attr('id','');
-                $('#r_1').html('NA');
-                $('.r_1').attr('id','');
-                $('.l_2_1').attr('id','NA');
-                $('#l_2_1').html('');
-                $('.l_2_2').attr('id','NA');
-                $('#l_2_2').html('');
-                $('.r_2_1').attr('id','NA');
-                $('#r_2_1').html('');
-                $('.r_2_2').attr('id','NA');
-                $('#r_2_2').html('');
-                $('.l_3_1').attr('id','NA');
-                $('#l_3_1').html('');
-                $('.l_3_2').attr('id','NA');
-                $('#l_3_2').html('');
-                $('.l_3_3').attr('id','NA');
-                $('#l_3_3').html('');
-                $('.l_3_4').attr('id','NA');
-                $('#l_3_4').html('');
-                $('.r_3_1').attr('id','NA');
-                $('#r_3_1').html('');
-                $('.r_3_2').attr('id','NA');
-                $('#r_3_2').html('');
-                $('.r_3_3').attr('id','NA');
-                $('#r_3_3').html('');
-                $('.r_3_4').attr('id','NA');
-                $('#r_3_4').html('');
-                
-            }
-        }})
+            }});  
+        }
+        
     }
 </script>
 
